@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EmployeeRegister.Models
 {
@@ -21,6 +23,10 @@ namespace EmployeeRegister.Models
 
     public long? EmployeeAadharNo { get; set; }
 
+    
+        [NotMapped]
+        [DisplayName("Upload File")]
 
+    public IFormFile Image { get; set; } = null!;
     }
 }

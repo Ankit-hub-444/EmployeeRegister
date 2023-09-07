@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmployeeRegister.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.IO;
+using Microsoft.Extensions.Hosting;
 
 namespace EmployeeRegister.Controllers
 {
@@ -14,10 +16,12 @@ namespace EmployeeRegister.Controllers
     public class EmployeeMastersController : Controller
     {
         private readonly EmployeeMasterContext _context;
+        private readonly IWebHostEnvironment webhostEnvironment;
 
-        public EmployeeMastersController(EmployeeMasterContext context)
+        public EmployeeMastersController(EmployeeMasterContext context,IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            webhostEnvironment = hostEnvironment;
         }
 
         // GET: EmployeeMasters
@@ -57,16 +61,30 @@ namespace EmployeeRegister.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EmployeeVtccertificateNo,EmployeeName,EmployeeFathersName,EmployeeDesignation,EmployeeBatchNo,EmployeeStartDate,EmployeeEndDate,EmployeeAadharNo")] EmployeeMaster employeeMaster)
+        public async Task<IActionResult> Create([Bind("EmployeeVtccertificateNo,EmployeeName,EmployeeFathersName,EmployeeDesignation,EmployeeBatchNo,EmployeeStartDate,EmployeeEndDate,EmployeeAadharNo,Image")] EmployeeMaster employeeMaster)
         {
+
+            string? uniqueFileName = null;
+            if (employeeMaster.Image != null)
+            {
+                string ImageUploadedFolder = Path.Combine(webhostEnvironment.WebRootPath, "UploadedImages");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + employeeMaster.Image.FileName;
+                string filePath = Path.Combine(ImageUploadedFolder, uniqueFileName);
+                using (var filestream = new FileStream(filePath, FileMode.Create))
+                {
+                    employeeMaster.Image.CopyTo(filestream);
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(employeeMaster);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             return View(employeeMaster);
         }
+
 
         // GET: EmployeeMasters/Edit/5
         public async Task<IActionResult> Edit(int? id)
