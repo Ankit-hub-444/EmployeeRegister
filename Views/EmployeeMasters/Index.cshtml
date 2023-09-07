@@ -1,0 +1,71 @@
+﻿@model IEnumerable<EmployeeRegister.Models.EmployeeMaster>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeFathersName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeDesignation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeBatchNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeEndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeAadharNo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeFathersName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeDesignation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeBatchNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeEndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeAadharNo)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.EmployeeVtccertificateNo">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.EmployeeVtccertificateNo">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.EmployeeVtccertificateNo">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
