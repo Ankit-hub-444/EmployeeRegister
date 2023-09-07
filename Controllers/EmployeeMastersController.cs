@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmployeeRegister.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EmployeeRegister.Controllers
 {
+    [Authorize]
     public class EmployeeMastersController : Controller
     {
         private readonly EmployeeMasterContext _context;
