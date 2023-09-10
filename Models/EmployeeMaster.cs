@@ -23,7 +23,10 @@ namespace EmployeeRegister.Models
 
     public long? EmployeeAadharNo { get; set; }
 
-    
+    public string? ImageFilePath { get; set; }
+
+    public string? ImageFileName { get; set; }
+
         [NotMapped]
         [DisplayName("Upload File")]
 

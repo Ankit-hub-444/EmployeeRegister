@@ -64,12 +64,17 @@
                 @Html.DisplayFor(modelItem => item.EmployeeAadharNo)
             </td>
                 <td>
-                   <img src="~/UploadedImages/@item.Image" class="rounded-circle" width="40" height="40" asp-append-version="true" />
+                   <img src="@Url.Content("~/UploadedImages/" + @item.ImageFilePath)" height="120" width="120" asp-append-version="true" />
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.EmployeeVtccertificateNo">Details</a>
+
                 </td>
           @* <td>
                 <a asp-action="Edit" asp-route-id="@item.EmployeeVtccertificateNo">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.EmployeeVtccertificateNo">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.EmployeeVtccertificateNo">Delete</a>
+            class="rounded-circle" width="40" height="40"
             </td>
             *@
         </tr>

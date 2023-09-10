@@ -17,6 +17,7 @@ public partial class EmployeeMasterContext : IdentityDbContext
 
     public virtual DbSet<EmployeeMaster> EmployeeMasters { get; set; }
 
+    public virtual DbSet<ApplicationUser> ApplicationUser { get; set; }
     internal Task SaveChangesAsync()
     {
         throw new NotImplementedException();

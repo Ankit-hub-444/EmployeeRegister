@@ -12,7 +12,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace EmployeeRegister.Controllers
 {
-    [Authorize]
+   
     public class EmployeeMastersController : Controller
     {
         private readonly EmployeeMasterContext _context;
@@ -25,6 +25,7 @@ namespace EmployeeRegister.Controllers
         }
 
         // GET: EmployeeMasters
+        [Authorize(Roles = "Ntpc Employee,Admin")]
         public async Task<IActionResult> Index()
         {
               return _context.EmployeeMasters != null ? 
@@ -33,6 +34,7 @@ namespace EmployeeRegister.Controllers
         }
 
         // GET: EmployeeMasters/Details/5
+        [Authorize(Roles = "Ntpc Employee,Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.EmployeeMasters == null)
@@ -51,11 +53,12 @@ namespace EmployeeRegister.Controllers
         }
 
         // GET: EmployeeMasters/Create
+        [Authorize(Roles = "Ntpc Employee,Admin")]
         public IActionResult Create()
         {
             return View();
         }
-
+        [Authorize(Roles = "Ntpc Employee,Admin")]
         // POST: EmployeeMasters/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -74,18 +77,24 @@ namespace EmployeeRegister.Controllers
                 {
                     employeeMaster.Image.CopyTo(filestream);
                 }
+
+                employeeMaster.ImageFilePath = "~/wwwroot/UploadedImages";
+                employeeMaster.ImageFileName= uniqueFileName;
+
+                if (ModelState.IsValid)
+                {
+                    _context.Add(employeeMaster);
+                    _context.SaveChanges();
+                    return RedirectToAction(nameof(Index));
+                }
             }
 
-            if (ModelState.IsValid)
-            {
-                _context.Add(employeeMaster);
-                _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
-            }
+
             return View(employeeMaster);
         }
 
 
+        [Authorize(Roles = "Ntpc Employee,Admin")]
         // GET: EmployeeMasters/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -102,6 +111,8 @@ namespace EmployeeRegister.Controllers
             return View(employeeMaster);
         }
 
+
+        [Authorize(Roles = "Ntpc Employee,Admin")]
         // POST: EmployeeMasters/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -137,6 +148,8 @@ namespace EmployeeRegister.Controllers
             return View(employeeMaster);
         }
 
+
+        [Authorize(Roles = "Admin")]
         // GET: EmployeeMasters/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -154,6 +167,8 @@ namespace EmployeeRegister.Controllers
 
             return View(employeeMaster);
         }
+
+        [Authorize(Roles = "Admin")]
 
         // POST: EmployeeMasters/Delete/5
         [HttpPost, ActionName("Delete")]

@@ -6,9 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<EmployeeMasterContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConn"))); 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<IdentityUser>().AddDefaultTokenProviders()
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<EmployeeMasterContext>();
-;
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
