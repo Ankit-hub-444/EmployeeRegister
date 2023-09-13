@@ -7,12 +7,16 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/EmployeeRegister.styles.css" asp-append-version="true" />
+    <link href="~/css/FrontPage.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EmployeeRegister</a>
+                <a class="navbar-brand rt-site-header-logo" asp-area="" asp-controller="Home" asp-action="Index" >
+                    <img src="~/FrontPageImage/ntpc_logo.jpg" alt="NTPC Dulanga" sizes="(max-width: 768px) 60px, (max-width: 1050px) 60px, (max-width: 1440px) 60px, 60px" srcset="" class="rt-site-header-logo-img">
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -40,11 +44,11 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    @*<footer class="border-top footer text-muted">
+       <div class="container">
             &copy; 2023 - EmployeeRegister - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
+    </footer>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

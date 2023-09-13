@@ -4,11 +4,16 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<link href="~/css/FrontPage.css" rel="stylesheet" type="text/css" />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div id="HASH">
+    <h1>VTC Register</h1>
+   @* <asp:LinkButton asp-action="Create" type="button" class="btn btn-success" runat="server">Create New</asp:LinkButton>*@
+    <form asp-action="Create">
+        <input type="submit" value="Create New" class="btn btn-success" /> 
+    </form>
+</div>
+
 <table class="table">
     <thead>
         <tr>
@@ -64,10 +69,13 @@
                 @Html.DisplayFor(modelItem => item.EmployeeAadharNo)
             </td>
                 <td>
-                   <img src="@Url.Content("~/UploadedImages/" + @item.ImageFilePath)" height="120" width="120" asp-append-version="true" />
+                   <img src="@Url.Content("~/UploadedImages/" + @item.ImageFileName)" height="120" width="120" asp-append-version="true" />
                 </td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.EmployeeVtccertificateNo">Details</a>
+                    @*button asp-action="Details" asp-route-id="@item.EmployeeVtccertificateNo" type="button" class="btn btn-primary">Details</button>*@
+                    <form asp-action="Details" asp-route-id="@item.EmployeeVtccertificateNo">
+                        <input type="submit" value="Details" class="btn btn-primary" />
+                    </form>
 
                 </td>
           @* <td>

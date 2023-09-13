@@ -18,15 +18,16 @@ public partial class EmployeeMasterContext : IdentityDbContext
     public virtual DbSet<EmployeeMaster> EmployeeMasters { get; set; }
 
     public virtual DbSet<ApplicationUser> ApplicationUser { get; set; }
-    internal Task SaveChangesAsync()
+    /*internal Task SaveChangesAsync()
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+       
     }
 
     internal void Update(EmployeeMaster employeeMaster)
     {
         throw new NotImplementedException();
-    }
+    }*/
 
     /* protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
      {

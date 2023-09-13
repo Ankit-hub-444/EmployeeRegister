@@ -9,6 +9,7 @@ using EmployeeRegister.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.IO;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Hosting.Server;
 
 namespace EmployeeRegister.Controllers
 {
@@ -64,23 +65,35 @@ namespace EmployeeRegister.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EmployeeVtccertificateNo,EmployeeName,EmployeeFathersName,EmployeeDesignation,EmployeeBatchNo,EmployeeStartDate,EmployeeEndDate,EmployeeAadharNo,Image")] EmployeeMaster employeeMaster)
+        public async Task<IActionResult> Create([Bind("EmployeeVtccertificateNo,EmployeeName,EmployeeFathersName,EmployeeDesignation,EmployeeBatchNo,EmployeeStartDate,EmployeeEndDate,EmployeeAadharNo,Address,IMENo,EmployeeIMEDate,MobileNumber,BloodGroup,IdCardNo,VtcNo, EmployeeNo,ImageFilePath,ImageFileName,Image,SignatureFilePath,SignatureFileName,Signature")] EmployeeMaster employeeMaster)
         {
 
-            string? uniqueFileName = null;
-            if (employeeMaster.Image != null)
+            string? uniqueImageFileName = null;
+            string? uniqueSignatureFileName = null;
+
+            if (employeeMaster.Image != null && employeeMaster.Signature != null)
             {
                 string ImageUploadedFolder = Path.Combine(webhostEnvironment.WebRootPath, "UploadedImages");
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + employeeMaster.Image.FileName;
-                string filePath = Path.Combine(ImageUploadedFolder, uniqueFileName);
+                uniqueImageFileName = Guid.NewGuid().ToString() + "_" + employeeMaster.Image.FileName;
+                string filePath = Path.Combine(ImageUploadedFolder, uniqueImageFileName);
                 using (var filestream = new FileStream(filePath, FileMode.Create))
                 {
                     employeeMaster.Image.CopyTo(filestream);
                 }
 
                 employeeMaster.ImageFilePath = "~/wwwroot/UploadedImages";
-                employeeMaster.ImageFileName= uniqueFileName;
+                employeeMaster.ImageFileName= uniqueImageFileName;
 
+                string SignatureUploadedFolder = Path.Combine(webhostEnvironment.WebRootPath, "UploadedSignature");
+                uniqueSignatureFileName = Guid.NewGuid().ToString() + "_" + employeeMaster.Signature.FileName;
+                string filePath1 = Path.Combine(ImageUploadedFolder, uniqueSignatureFileName);
+                using (var filestream = new FileStream(filePath1, FileMode.Create))
+                {
+                    employeeMaster.Signature.CopyTo(filestream);
+                }
+
+                employeeMaster.SignatureFilePath = "~/wwwroot/UploadedSignature";
+                employeeMaster.SignatureFileName = uniqueSignatureFileName;
                 if (ModelState.IsValid)
                 {
                     _context.Add(employeeMaster);
@@ -118,14 +131,40 @@ namespace EmployeeRegister.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EmployeeVtccertificateNo,EmployeeName,EmployeeFathersName,EmployeeDesignation,EmployeeBatchNo,EmployeeStartDate,EmployeeEndDate,EmployeeAadharNo")] EmployeeMaster employeeMaster)
+        public async Task<IActionResult> Edit(int id, [Bind("EmployeeVtccertificateNo,EmployeeName,EmployeeFathersName,EmployeeDesignation,EmployeeBatchNo,EmployeeStartDate,EmployeeEndDate,EmployeeAadharNo,Address,IMENo,EmployeeIMEDate,MobileNumber,BloodGroup,IdCardNo,VtcNo, EmployeeNo,ImageFilePath,ImageFileName,Image,SignatureFilePath,SignatureFileName,Signature")] EmployeeMaster employeeMaster)
         {
             if (id != employeeMaster.EmployeeVtccertificateNo)
             {
                 return NotFound();
             }
+            string? uniqueImageFileName = null;
+            string? uniqueSignatureFileName = null;
+            if (employeeMaster.Image != null && employeeMaster.Signature != null)
+            {
+                string ImageUploadedFolder = Path.Combine(webhostEnvironment.WebRootPath, "UploadedImages");
+                uniqueImageFileName = Guid.NewGuid().ToString() + "_" + employeeMaster.Image.FileName;
+                string filePath = Path.Combine(ImageUploadedFolder, uniqueImageFileName);
+                using (var filestream = new FileStream(filePath, FileMode.Create))
+                {
+                    employeeMaster.Image.CopyTo(filestream);
+                }
 
-            if (ModelState.IsValid)
+                employeeMaster.ImageFilePath = "~/wwwroot/UploadedImages";
+                employeeMaster.ImageFileName = uniqueImageFileName;
+
+                string SignatureUploadedFolder = Path.Combine(webhostEnvironment.WebRootPath, "UploadedSignature");
+                uniqueSignatureFileName = Guid.NewGuid().ToString() + "_" + employeeMaster.Signature.FileName;
+                string filePath1 = Path.Combine(ImageUploadedFolder, uniqueSignatureFileName);
+                using (var filestream = new FileStream(filePath1, FileMode.Create))
+                {
+                    employeeMaster.Signature.CopyTo(filestream);
+                }
+
+                employeeMaster.SignatureFilePath = "~/wwwroot/UploadedSignature";
+                employeeMaster.SignatureFileName = uniqueSignatureFileName;
+            }
+
+                    if (ModelState.IsValid)
             {
                 try
                 {
