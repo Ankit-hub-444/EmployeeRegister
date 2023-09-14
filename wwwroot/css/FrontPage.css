@@ -1,17 +1,61 @@
-﻿.rt-hero__media.responsive-image-cover img {
+﻿#bg-test {
+    /* background-image: url("../FrontPageImage/rt-26100-.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: stretch;
+    object-fit: fill;*/
+    background-image: url("../FrontPageImage/rt-26100-.jpg");
+    width: 90vw;
+    height: 100vh;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: relative;
+}
+nav {
+    overflow: auto;
+}
+
+.splash {
+    background: url("../FrontPageImage/rt-26100-.jpg") no-repeat; /*remove silver and fill the proper url*/
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    ;
+}
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    object-fit: fill;
+}
+
+ .fill img {
+        flex-shrink: 0;
+        min-width: 100%;
+        min-height: 100%
+  
+      }
+
+
+.rt-hero__media.responsive-image-cover img {
     position: absolute;
     left: 0;
     top: 0;
-    left: auto;
-    top: auto;
+    right: auto;
+    bottom: auto;
     width: 100%;
     height: 90%;
     -webkit-transform: none;
     transform: none;
-    -o-object-fit: cover;
-    object-fit: cover;
-    -o-object-position: 50% 50%;
-    object-position: 50% 50%;
+    object-fit: fill;
+    object-position: left;
 }
 
 .rt-site-header-logo {

@@ -56,3 +56,11 @@
 .shadow-none {
     box-shadow: none !important;
 }
+
+.sign-img {
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}

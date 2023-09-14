@@ -1,6 +1,6 @@
 ﻿@page
 @model RegisterModel
-@{
+@*@{
     ViewData["Title"] = "Register";
 }
 
@@ -37,7 +37,6 @@
                 <label asp-for="Input.ConfirmPassword"></label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-
             <div class="form-floating">
                 <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select" aria-required="true" >
                 <option disabled selected>Select Role</option>
@@ -47,7 +46,7 @@
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
         </form>
     </div>
-   <div class="col-md-6 col-md-offset-2">
+   @*<div class="col-md-6 col-md-offset-2">
         <section>
             <h3>Use another service to register.</h3>
             <hr />
@@ -76,10 +75,11 @@
                 }
             }
         </section>
-    </div>
-</div>
+   </div>
+  </div>*@
 
-@*<!-- Section: Design Block -->
+
+<!-- Section: Design Block -->
 <section class="text-center">
     <!-- Background image -->
     <div class="p-5 bg-image" style="
@@ -159,7 +159,7 @@
             </div>
         </div>
     </div>
-</section>*@
+</section>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
