@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    int intSno = 0;
 }
 
 <link href="~/css/FrontPage.css" rel="stylesheet" type="text/css" />
@@ -14,9 +15,16 @@
     </form>
 </div>
 
+<vc:search-bar search-pager="@ViewBag.SearchPager">
+</vc:search-bar>
+
+
 <table class="table">
     <thead>
         <tr>
+            <th>
+                Sno
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.EmployeeName)
             </th>
@@ -46,7 +54,12 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
+            intSno = intSno + 1;
+
         <tr>
+            <td>
+                @intSno
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.EmployeeName)
             </td>
@@ -69,7 +82,9 @@
                 @Html.DisplayFor(modelItem => item.EmployeeAadharNo)
             </td>
                 <td>
-                   <img src="@Url.Content("~/UploadedImages/" + @item.ImageFileName)" height="120" width="120" asp-append-version="true" />
+
+                    <img src="data:image/jpg;base64,@item.ImageFileData" height="120" width="120" asp-append-version="true" />
+
                 </td>
                 <td>
                     @*button asp-action="Details" asp-route-id="@item.EmployeeVtccertificateNo" type="button" class="btn btn-primary">Details</button>*@
@@ -89,3 +104,5 @@
 }
     </tbody>
 </table>
+
+

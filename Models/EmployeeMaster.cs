@@ -24,7 +24,11 @@ namespace EmployeeRegister.Models
 
         public int? EmployeeBatchNo { get; set; }
 
-        [DisplayName("Start Date")]
+        [DisplayName("Date of Birth")]
+
+        public DateTime? EmployeeDateOfBirth { get; set; }
+
+        [DisplayName("End Date")]
 
         public DateTime? EmployeeStartDate { get; set; }
 
@@ -40,6 +44,11 @@ namespace EmployeeRegister.Models
 
         public string? Address { get; set; }
 
+
+        [DisplayName("FormA No")]
+
+        public string? FormANo { get; set; }
+
         [DisplayName("IME No")]
 
         public string? IMENo { get; set; }
@@ -52,6 +61,11 @@ namespace EmployeeRegister.Models
         [DisplayName("Mobile Number")]
 
         public string? MobileNumber { get; set; }
+
+        [DisplayName("Emergency Mobile Number")]
+
+        public string? EmergencyMobileNumber { get; set; }
+
         [DisplayName("Blood Group")]
 
         public string? BloodGroup { get; set; }
@@ -66,24 +80,50 @@ namespace EmployeeRegister.Models
 
         public string? EmployeeNo { get; set; }
 
-        public string? ImageFilePath { get; set; }
 
-        public string? ImageFileName { get; set; }
+        public string? ImageFileData { get; set; }
 
         [NotMapped]
         [DisplayName("Profile Picture")]
 
-        public IFormFile Image { get; set; } = null!;
+        public IFormFile? Image { get; set; }
 
-
-
-        public string? SignatureFilePath { get; set; }
-
-        public string? SignatureFileName { get; set; }
+        public string? SignatureData { get; set; }
 
         [NotMapped]
         [DisplayName("Upload Signature File")]
 
-        public IFormFile Signature { get; set; } = null!;
+        public IFormFile? Signature { get; set; } 
+
+        public string? AuthoritySignatureData { get; set; }
+
+        [NotMapped]
+        [DisplayName("Upload Issuing Authority's Signature File")]
+        public IFormFile? AuthoritySignature { get; set; }
+
+        public string? VtcCertificateData { get; set; }
+        [NotMapped]
+        [DisplayName("Upload  Vtc Certificate File")]
+        public IFormFile? VtcCertificate { get; set; }
+
+
+        public string? FormOData { get; set; }
+        [NotMapped]
+        [DisplayName("Upload FormO File")]
+        public IFormFile? FormO { get; set; }
+
+        public string? FormAData { get; set;}
+        [NotMapped]
+        [DisplayName("Upload FormA File")]
+        public IFormFile? FormA { get; set; }
+
+        public string? BarcodeImageData { get; set; }
+        [NotMapped]
+        [DisplayName("Barcode Image File")]
+        public IFormFile? BarcodeImage { get; set; }
+        public string? Barcode { get; set; }
+
+
+       
     }
 }

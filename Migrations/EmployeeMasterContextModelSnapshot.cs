@@ -29,11 +29,32 @@ namespace EmployeeRegister.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmployeeVtccertificateNo"));
 
-                    b.Property<long?>("EmployeeAadharNo")
-                        .HasColumnType("bigint");
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AuthoritySignatureData")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Barcode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BarcodeImageData")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BloodGroup")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmergencyMobileNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmployeeAadharNo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("EmployeeBatchNo")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("EmployeeDateOfBirth")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("EmployeeDesignation")
                         .HasColumnType("nvarchar(max)");
@@ -44,17 +65,47 @@ namespace EmployeeRegister.Migrations
                     b.Property<string>("EmployeeFathersName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("EmployeeIMEDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("EmployeeName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmployeeNo")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("EmployeeStartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ImageFileName")
+                    b.Property<string>("FormAData")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageFilePath")
+                    b.Property<string>("FormANo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FormOData")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IMENo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdCardNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageFileData")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MobileNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SignatureData")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VtcCertificateData")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VtcNo")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("EmployeeVtccertificateNo");

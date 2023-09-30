@@ -11,6 +11,7 @@ public partial class EmployeeMasterContext : IdentityDbContext
 
     public EmployeeMasterContext(DbContextOptions<EmployeeMasterContext> options) : base(options)
     {
+        //this.Database.SetCommandTimeout(90);
     }
 
     /*public virtual DbSet<Employee> Employees { get; set; }*/

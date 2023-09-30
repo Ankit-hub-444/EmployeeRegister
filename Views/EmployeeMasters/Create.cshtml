@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<link href="~/css/Edit_DetailPage.css" rel="stylesheet" type="text/css" />
+<link href="~/css/Edit_CreatePage.css" rel="stylesheet" type="text/css" />
 
 @*<h1>Create</h1>
 
@@ -142,21 +142,58 @@
                     </div>
                 </div>
                 <div class="card mb-4 mb-xl-0">
+
+                    @*<div class="card-header">Upload Files</div>
+                    <div class="card-body text-center">
+                            
+                                <header>
+                                    <h4>Select File here</h4>
+                                </header>
+                                <p>Files Supported: PDF, TEXT, DOC , DOCX</p>
+                                @*<input type="file" hidden accept=".doc,.docx,.pdf" id="fileID" style="display:none;">
+                        <div class="drop_box">  </div>
+                        <button class="btn">Choose File</button> 
+                                <div class="form-group">
+                                    <label asp-for="Signature" class="control-label"></label>
+                                    <input type="file" asp-for="Signature" accept="image/*" name="Signature" class="btn" />
+                                    <span asp-validation-for="Signature" class="text-danger"></span>
+                                </div>
+                          
+                        </div>
+                    </div>
+                       
+                    </div>*@
                     <div class="card-header">Signature</div>
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
-                        <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                        <img class="img-account-profile rounded-circle mb-2"  src="~/FrontPageImage/download.jpg" alt="">
                         <!-- Profile picture help block-->
                         <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                         <!-- Profile picture upload button-->
                         @*<button class="btn btn-primary" type="button">Upload new image</button>*@
                         <div class="form-group">
-                            <label asp-for="Signature" class="control-label"></label>
+                            <label asp-for="Signature" class="control-label">Upload Manager's Signature</label>
                             <input type="file" asp-for="Signature" accept="image/*" name="Signature" />
                             <span asp-validation-for="Signature" class="text-danger"></span>
                         </div>
                     </div>
-                </div>
+
+
+                    <div class="card-header">Issuing Authority's Signature</div>
+                    <div class="card-body text-center">
+                        <!-- Profile picture image-->
+                        <img class="img-account-profile rounded-circle mb-2" src="~/FrontPageImage/download.jpg" alt="">
+                        <!-- Profile picture help block-->
+                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                        <!-- Profile picture upload button-->
+                        @*<button class="btn btn-primary" type="button">Upload new image</button>*@
+                        <div class="form-group">
+                            <label asp-for="AuthoritySignature" class="control-label">Upload Issuing Authority's Signature</label>
+                            <input type="file" asp-for="AuthoritySignature" accept="image/*" name="AuthoritySignature" />
+                            <span asp-validation-for="AuthoritySignature" class="text-danger"></span>
+                        </div>
+                    </div>
+                    </div>
 
 
             </div>
@@ -318,6 +355,29 @@
                                 <span asp-validation-for="EmployeeAadharNo" class="text-danger"></span>
                             </div>
                         </div>
+
+                        <div class="row gx-3 mb-3">
+                        <div class="form-group">
+                                <label asp-for="VtcCertificate" class="control-label">Upload Vtc Certificate</label>
+                                <input type="file" asp-for="VtcCertificate" accept=".pdf" name="VtcCertificate" />
+                                <span asp-validation-for="VtcCertificate" class="text-danger"></span>
+                        </div>
+
+                            <div class="form-group">
+                                <label asp-for="FormO" class="control-label">Upload  Form O</label>
+                                <input type="file" asp-for="FormO" accept=".pdf" name="FormO" />
+                                <span asp-validation-for="FormO" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row gx-3 mb-3">
+                            <div class="form-group">
+                                <label asp-for="FormA" class="control-label">Upload FormA</label>
+                                <input type="file" asp-for="FormA" accept=".pdf" name="FormA" />
+                                <span asp-validation-for="FormA" class="text-danger"></span>
+                            </div>
+                            </div>
+
                         <!-- Save changes button-->
                         @*<button class="btn btn-primary" type="button">Save changes</button>*@
                         <div class="form-group">
