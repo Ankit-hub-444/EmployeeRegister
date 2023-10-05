@@ -91,7 +91,7 @@
         -webkit-text-stroke: 1px transparent;
         font-family: "Inter-Bold", Helvetica;
         font-weight: 700;
-        color: #210feb;
+        color: #1565b2;
         font-size: 20px;
         text-align: center;
         letter-spacing: 0;
@@ -305,16 +305,20 @@
     }
 
     .a .rectangle-9 {
+
         position: absolute;
         width: 91px;
         height: 56px;
         top: 195px;
         left: 419px;
+        background-color: #ffffff;
+        border: 2px solid;
+        border-color: #000000;
     }
 
     .a .text-wrapper-8 {
         position: absolute;
-        width: 79px;
+        width: 91px;
         top: 202px;
         left: 425px;
         font-family: "Inter-Bold", Helvetica;

@@ -28,7 +28,7 @@ namespace EmployeeRegister.Models
 
         public DateTime? EmployeeDateOfBirth { get; set; }
 
-        [DisplayName("End Date")]
+        [DisplayName("Start Date")]
 
         public DateTime? EmployeeStartDate { get; set; }
 

@@ -37,18 +37,43 @@ namespace EmployeeRegister.Controllers
             List<EmployeeMaster> employees;
 
             if (SearchText != "" && SearchText != null) {
-                employees =await _context.EmployeeMasters.Where(e => e.EmployeeName.Contains(SearchText) || e.EmployeeAadharNo.Contains(SearchText)).ToListAsync();
+                employees = await (from p in _context.EmployeeMasters
+                                   select new EmployeeMaster()
+                                   {
+                                       EmployeeVtccertificateNo = p.EmployeeVtccertificateNo,
+                                       EmployeeName = p.EmployeeName,
+                                       EmployeeFathersName = p.EmployeeFathersName,
+                                       EmployeeAadharNo = p.EmployeeAadharNo,
+                                       EmployeeBatchNo = p.EmployeeBatchNo,
+                                       EmployeeDesignation = p.EmployeeDesignation,
+                                       EmployeeStartDate = p.EmployeeStartDate,
+                                       EmployeeEndDate = p.EmployeeEndDate,
+                                      // ImageFileData = p.ImageFileData
+                                   }).Where(e => e.EmployeeName.Contains(SearchText) || e.EmployeeAadharNo.Contains(SearchText)).ToListAsync();
                /* return _context.EmployeeMasters != null ?
              View(await _context.EmployeeMasters.Where(e=>e.EmployeeName.Contains(SearchText)).ToListAsync()) :
              Problem("Entity set 'EmployeeMasterContext.EmployeeMasters'  is null.");*/
             }
             else
             {
-                employees = await _context.EmployeeMasters.ToListAsync();
+                //employees = await _context.EmployeeMasters.ToListAsync();
+                employees = await (from p in _context.EmployeeMasters
+                                   select new EmployeeMaster()
+                                   {
+                                       EmployeeVtccertificateNo = p.EmployeeVtccertificateNo,
+                                       EmployeeName = p.EmployeeName,
+                                       EmployeeFathersName = p.EmployeeFathersName,
+                                       EmployeeAadharNo = p.EmployeeAadharNo,
+                                       EmployeeBatchNo = p.EmployeeBatchNo,
+                                       EmployeeDesignation = p.EmployeeDesignation,
+                                       EmployeeStartDate = p.EmployeeStartDate,
+                                       EmployeeEndDate = p.EmployeeEndDate,
+                                       //ImageFileData = p.ImageFileData
+                                   }).ToListAsync();
 
-               /*return  _context.EmployeeMasters != null ?
-           View(await _context.EmployeeMasters.ToListAsync()) :
-           Problem("Entity set 'EmployeeMasterContext.EmployeeMasters'  is null.");*/
+                /*return  _context.EmployeeMasters != null ?
+            View(await _context.EmployeeMasters.ToListAsync()) :
+            Problem("Entity set 'EmployeeMasterContext.EmployeeMasters'  is null.");*/
             }
 
             const int pageSize = 10;
@@ -386,6 +411,7 @@ namespace EmployeeRegister.Controllers
                 employeeMaster.SignatureFileName = uniqueSignatureFileName;
             }*/
             _context.Attach(employeeMaster);
+            //_context.Add(employeeMaster);
             byte[]? bytes6 = null;
 
             if (employeeMaster.Image != null)
@@ -525,7 +551,33 @@ namespace EmployeeRegister.Controllers
                  _context.Entry(employeeMaster).Property(x => x.FormAData).IsModified = false;
              }
 
-             
+             ///later going to be deleted
+
+            string id1 = Convert.ToString(employeeMaster.EmployeeVtccertificateNo);
+            string barCodeText = $"https://localhost:7217/EmployeeMasters/Details/{id1}";
+            employeeMaster.Barcode = generateBarcode();
+            byte[]? bytes4 = null; 
+            Zen.Barcode.Code128BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
+            var image = barcode.Draw(barCodeText, 200);
+            var resultImage = new Bitmap(image.Width, image.Height + 20); // 20 is bottom padding, adjust to your text
+
+            using (var graphics = Graphics.FromImage(resultImage))
+            using (var font = new Font("Consolas", 12))
+            using (var brush = new SolidBrush(Color.Black))
+            using (var format = new StringFormat()
+            {
+                Alignment = StringAlignment.Center, // Also, horizontally centered text, as in your example of the expected output
+                LineAlignment = StringAlignment.Far
+            })
+            {
+                graphics.Clear(Color.White);
+                graphics.DrawImage(image, 0, 0);
+                graphics.DrawString(employeeMaster.Barcode, font, brush, resultImage.Width / 2, resultImage.Height, format);
+            }
+
+            bytes4 = converterDemo(resultImage);
+
+            employeeMaster.BarcodeImageData = Convert.ToBase64String(bytes4, 0, bytes4.Length);
 
             if (ModelState.IsValid)
             {

@@ -46,9 +46,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.EmployeeAadharNo)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Image)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -81,11 +81,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.EmployeeAadharNo)
             </td>
-                <td>
+                @*<td>
 
                     <img src="data:image/jpg;base64,@item.ImageFileData" height="120" width="120" asp-append-version="true" />
 
-                </td>
+                </td>*@
                 <td>
                     @*button asp-action="Details" asp-route-id="@item.EmployeeVtccertificateNo" type="button" class="btn btn-primary">Details</button>*@
                     <form asp-action="Details" asp-route-id="@item.EmployeeVtccertificateNo">

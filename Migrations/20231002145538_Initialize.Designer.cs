@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmployeeRegister.Migrations
 {
     [DbContext(typeof(EmployeeMasterContext))]
-    [Migration("20230927114723_NearFinalModel")]
-    partial class NearFinalModel
+    [Migration("20231002145538_Initialize")]
+    partial class Initialize
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

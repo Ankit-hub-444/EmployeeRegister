@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EmployeeRegister.Migrations
 {
     /// <inheritdoc />
-    public partial class IdentityTables : Migration
+    public partial class Initialize : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,6 +30,9 @@ namespace EmployeeRegister.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -48,6 +51,44 @@ namespace EmployeeRegister.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EmployeeMasters",
+                columns: table => new
+                {
+                    EmployeeVtccertificateNo = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EmployeeName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmployeeFathersName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmployeeDesignation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmployeeBatchNo = table.Column<int>(type: "int", nullable: true),
+                    EmployeeDateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EmployeeStartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EmployeeEndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EmployeeAadharNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FormANo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IMENo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmployeeIMEDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    MobileNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmergencyMobileNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BloodGroup = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IdCardNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VtcNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmployeeNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageFileData = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SignatureData = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AuthoritySignatureData = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VtcCertificateData = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FormOData = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FormAData = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BarcodeImageData = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Barcode = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmployeeMasters", x => x.EmployeeVtccertificateNo);
                 });
 
             migrationBuilder.CreateTable(
@@ -213,6 +254,9 @@ namespace EmployeeRegister.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "EmployeeMasters");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

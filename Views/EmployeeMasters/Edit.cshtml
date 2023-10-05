@@ -256,7 +256,7 @@
                                     <span asp-validation-for="EmployeeDesignation" class="text-danger"></span>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label asp-for="EmployeeBatchNo" class="control-label small mb-1"></label>
+                                    <label asp-for="EmployeeBatchNo" class="control-label small mb-1">VTC Batch No</label>
                                     <input asp-for="EmployeeBatchNo" class="form-control" />
                                     <span asp-validation-for="EmployeeBatchNo" class="text-danger"></span>
                                 </div>
@@ -274,12 +274,12 @@
                                 <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="San Francisco, CA">
                             </div>*@
                                 <div class="form-group col-md-6">
-                                    <label asp-for="EmployeeStartDate" class="control-label small mb-1"></label>
+                                    <label asp-for="EmployeeStartDate" class="control-label small mb-1">VTC Start Date</label>
                                     <input asp-for="EmployeeStartDate" class="form-control" />
                                     <span asp-validation-for="EmployeeStartDate" class="text-danger"></span>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label asp-for="EmployeeEndDate" class="control-label small mb-1"></label>
+                                    <label asp-for="EmployeeEndDate" class="control-label small mb-1">VTC End Date</label>
                                     <input asp-for="EmployeeEndDate" class="form-control" />
                                     <span asp-validation-for="EmployeeEndDate" class="text-danger"></span>
                                 </div>
@@ -372,6 +372,29 @@
                                 <span asp-validation-for="EmployeeAadharNo" class="text-danger"></span>
                             </div>
                             </div>
+
+
+                        <div class="row gx-3 mb-3">
+                            <div class="form-group">
+                                <label asp-for="VtcCertificate" class="control-label">Change Vtc Certificate</label>
+                                <input type="file" asp-for="VtcCertificate" accept=".pdf" name="VtcCertificate" />
+                                <span asp-validation-for="VtcCertificate" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="FormO" class="control-label">Change Form O</label>
+                                <input type="file" asp-for="FormO" accept=".pdf" name="FormO" />
+                                <span asp-validation-for="FormO" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row gx-3 mb-3">
+                            <div class="form-group">
+                                <label asp-for="FormA" class="control-label">Change FormA</label>
+                                <input type="file" asp-for="FormA" accept=".pdf" name="FormA" />
+                                <span asp-validation-for="FormA" class="text-danger"></span>
+                            </div>
+                        </div>
                         <!-- Save changes button-->
                         @*<button class="btn btn-primary" type="button">Save changes</button>*@
                             <div class="form-group">
