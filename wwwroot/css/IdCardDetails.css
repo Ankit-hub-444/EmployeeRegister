@@ -1,98 +1,55 @@
 ﻿.a {
+    position: relative;
     width: 595px;
     height: 842px;
     background-color: #ffffff;
+    border: 1px solid;
+    border-color: #000000;
 }
 
     .a .overlap-group {
-        position: relative;
-        width: 510px;
-        height: 297px;
-        top: 259px;
-        left: 56px;
-        background-color: #ffffff;
-        border: 2px solid;
-        border-color: #000000;
+        width: 324px;
+        top: 193px;
+        left: 133px;
+        position: absolute;
+        height: 186px;
     }
 
-    .a .overlap {
+    .a .rectangle-stroke {
         position: absolute;
-        width: 510px;
-        height: 287px;
+        width: 319.394px;
+        height: 186px;
         top: 0;
-        left: 0;
-    }
-
-    .a .div {
-        position: absolute;
-        width: 510px;
-        height: 273px;
-        top: 0;
-        left: 0;
+        left: 2px;
+        border: 2px solid #000;
+        background: #FFF;
+        box-shadow: 0px 2.50505px 2.50505px 0px rgba(0, 0, 0, 0.25);
     }
 
     .a .rectangle {
         position: absolute;
-        width: 393px;
-        height: 102px;
-        top: 95px;
-        left: 117px;
-        background-color: #ffffff;
-        border: 2px solid;
-        border-color: #000000;
-    }
-
-    .a .rectangle-2 {
-        position: absolute;
-        width: 120px;
-        height: 98px;
-        top: 0;
-        left: 0;
-        background-color: #ffffff;
-        border: 2px solid;
-        border-color: #000000;
-    }
-
-    .a .img {
-        position: absolute;
-        width: 120px;
-        height: 154px;
-        top: 97px;
-        left: 0;
-        object-fit: cover;
-    }
-
-    .a .rectangle-3 {
-        position: absolute;
-        width: 99px;
-        height: 67px;
-        top: 15px;
-        left: 10px;
-        object-fit: cover;
-    }
-
-    .a .rectangle-4 {
-        position: absolute;
-        width: 393px;
-        height: 98px;
-        top: 0;
-        left: 117px;
-        background-color: #ffffff;
-        border: 2px solid;
-        border-color: #000000;
+        width: 320.5px;
+        height: 60px;
+        top: -1px;
+        left: -1px;
+        
+        border: 2px solid #000;
+        background: #FFF;
+        box-shadow: 0px 2.50505px 2.50505px 0px rgba(0, 0, 0, 0.25);
+        
     }
 
     .a .DULANGA-COAL-MINING {
         position: absolute;
-        width: 365px;
-        top: 22px;
-        left: 132px;
-        text-shadow: 0px 4px 4px #00000040;
-        -webkit-text-stroke: 1px transparent;
+        width: 302px;
+        top: 9px;
+        left: 12px;
+        text-shadow: 0px 2.51px 2.51px #00000040;
+        -webkit-text-stroke: 0.63px transparent;
         font-family: "Inter-Bold", Helvetica;
         font-weight: 700;
         color: #1565b2;
-        font-size: 20px;
+        font-size: 12.5px;
         text-align: center;
         letter-spacing: 0;
         line-height: normal;
@@ -101,37 +58,56 @@
 
     .a .name-of-agency-UPL {
         position: absolute;
-        width: 296px;
-        top: 40px;
-        left: 136px;
+        width: 138px;
+        top: 24px;
+        left: 17px;
         font-family: "Inter-Bold", Helvetica;
         font-weight: 700;
         color: #000000;
-        font-size: 14px;
+        font-size: 8.8px;
         letter-spacing: 0;
         line-height: normal;
     }
 
-    .a .rectangle-5 {
+    .a .img {
         position: absolute;
-        width: 390px;
-        height: 55px;
-        top: 196px;
-        left: 120px;
+        width: 107px;
+        height: 20px;
+        top: 33px;
+        left: 198px;
+        object-fit: cover;
+    }
+
+    .a .rectangle-2 {
+        position: absolute;
+        width: 75px;
+        height: 98px;
+        top: 59px;
+        left: 0px;
+        object-fit: cover;
+    }
+
+    .a .div {
+        position: absolute;
+        width: 244.5px;
+        height: 66px;
+        top: 58px;
+        left: 75px;
         background-color: #ffffff;
-        border: 1px solid;
+        border: 2px solid;
         border-color: #000000;
+        transform: rotate(180deg);
     }
 
     .a .name-ankit-anand {
         position: absolute;
-        width: 329px;
-        top: 106px;
-        left: 133px;
+        width: 206px;
+        top: 66px;
+        left: 86px;
         font-family: "Inter-Bold", Helvetica;
         font-weight: 700;
         color: #000000;
-        font-size: 13px;
+        font-size: 8.1px;
         letter-spacing: 0;
         line-height: normal;
     }
@@ -140,59 +116,70 @@
         font-family: "Inter-Bold", Helvetica;
         font-weight: 700;
         color: #000000;
-        font-size: 13px;
+        font-size: 8.1px;
         letter-spacing: 0;
     }
 
     .a .span {
-        font-size: 15px;
+        font-size: 9.4px;
     }
 
     .a .text-wrapper-2 {
         position: absolute;
-        width: 329px;
-        top: 126px;
-        left: 133px;
+        width: 206px;
+        top: 79px;
+        left: 86px;
         font-family: "Inter-Bold", Helvetica;
         font-weight: 700;
         color: #000000;
-        font-size: 13px;
+        font-size: 8.1px;
         letter-spacing: 0;
         line-height: normal;
     }
 
-    .a .dob {
+    .a .doj {
         position: absolute;
-        width: 362px;
-        top: 150px;
-        left: 133px;
+        width: 227px;
+        top: 94px;
+        left: 86px;
         font-family: "Inter-Bold", Helvetica;
         font-weight: 700;
         color: #000000;
-        font-size: 13px;
+        font-size: 8.1px;
         letter-spacing: 0;
         line-height: normal;
     }
 
     .a .text-wrapper-3 {
         position: absolute;
-        width: 332px;
-        top: 171px;
-        left: 133px;
+        width: 208px;
+        top: 107px;
+        left: 86px;
         font-family: "Inter-Bold", Helvetica;
         font-weight: 700;
         color: #000000;
-        font-size: 13px;
+        font-size: 8.1px;
         letter-spacing: 0;
         line-height: normal;
     }
 
-    .a .rectangle-6 {
+    .a .rectangle-3 {
         position: absolute;
-        width: 85px;
-        height: 56px;
-        top: 195px;
-        left: 118px;
+        width: 244.5px;
+        height: 34px;
+        top: 123px;
+        left: 75px;
+        background-color: #ffffff;
+        border: 0.63px solid;
+        border-color: #000000;
+    }
+
+    .a .rectangle-4 {
+        position: absolute;
+        width: 74px;
+        height: 37px;
+        top: 122px;
+        left: 75px;
         background-color: #ffffff;
         border: 2px solid;
         border-color: #000000;
@@ -200,13 +187,13 @@
 
     .a .text-wrapper-4 {
         position: absolute;
-        width: 77px;
-        top: 202px;
-        left: 121px;
+        width: 48px;
+        top: 126px;
+        left: 78px;
         font-family: "Inter-Bold", Helvetica;
         font-weight: 700;
         color: #000000;
-        font-size: 13px;
+        font-size: 8.1px;
         text-align: center;
         letter-spacing: 0;
         line-height: normal;
@@ -214,24 +201,24 @@
 
     .a .text-wrapper-5 {
         position: absolute;
-        width: 58px;
-        top: 230px;
-        left: 133px;
+        width: 36px;
+        top: 144px;
+        left: 85px;
         font-family: "Inter-Bold", Helvetica;
         font-weight: 700;
         color: #000000;
-        font-size: 12px;
+        font-size: 7.5px;
         text-align: center;
         letter-spacing: 0;
         line-height: normal;
     }
 
-    .a .rectangle-7 {
+    .a .rectangle-5 {
         position: absolute;
-        width: 114px;
-        height: 56px;
-        top: 195px;
-        left: 202px;
+        width: 71px;
+        height: 37px;
+        top: 122px;
+        left: 129px;
         background-color: #ffffff;
         border: 2px solid;
         border-color: #000000;
@@ -240,12 +227,12 @@
     .a .text-wrapper-6 {
         position: absolute;
         width: 68px;
-        top: 203px;
-        left: 222px;
+        top: 126px;
+        left: 130px;
         font-family: "Inter-Bold", Helvetica;
         font-weight: 700;
         color: #000000;
-        font-size: 13px;
+        font-size: 8.1px;
         text-align: center;
         letter-spacing: 0;
         line-height: normal;
@@ -253,24 +240,24 @@
 
     .a .element {
         position: absolute;
-        width: 77px;
-        top: 216px;
-        left: 222px;
+        width: 48px;
+        top: 135px;
+        left: 141px;
         font-family: "Inter-Bold", Helvetica;
         font-weight: 700;
         color: #000000;
-        font-size: 12px;
+        font-size: 7.5px;
         text-align: center;
         letter-spacing: 0;
         line-height: normal;
     }
 
-    .a .rectangle-8 {
+    .a .rectangle-6 {
         position: absolute;
-        width: 103px;
-        height: 56px;
-        top: 195px;
-        left: 316px;
+        width: 60px;
+        height: 37px;
+        top: 122px;
+        left: 199px;
         background-color: #ffffff;
         border: 2px solid;
         border-color: #000000;
@@ -278,13 +265,13 @@
 
     .a .VTC-no {
         position: absolute;
-        width: 88px;
-        top: 203px;
-        left: 322px;
+        width: 55px;
+        top: 126px;
+        left: 195px;
         font-family: "Inter-Bold", Helvetica;
         font-weight: 700;
         color: #000000;
-        font-size: 13px;
+        font-size: 8.1px;
         text-align: center;
         letter-spacing: 0;
         line-height: normal;
@@ -292,25 +279,24 @@
 
     .a .text-wrapper-7 {
         position: absolute;
-        width: 91px;
-        top: 230px;
-        left: 328px;
+        width: 57px;
+        top: 144px;
+        left: 200px;
         font-family: "Inter-Bold", Helvetica;
         font-weight: 700;
         color: #000000;
-        font-size: 12px;
+        font-size: 7.5px;
         text-align: center;
         letter-spacing: 0;
         line-height: normal;
     }
 
-    .a .rectangle-9 {
-
+    .a .rectangle-7 {
         position: absolute;
-        width: 91px;
-        height: 56px;
-        top: 195px;
-        left: 419px;
+        width: 61.5px;
+        height: 37px;
+        top: 122px;
+        left: 258px;
         background-color: #ffffff;
         border: 2px solid;
         border-color: #000000;
@@ -318,80 +304,139 @@
 
     .a .text-wrapper-8 {
         position: absolute;
-        width: 91px;
-        top: 202px;
-        left: 425px;
+        width: 54px;
+        top: 126px;
+        left: 264px;
         font-family: "Inter-Bold", Helvetica;
         font-weight: 700;
         color: #000000;
-        font-size: 13px;
+        font-size: 8.1px;
         letter-spacing: 0;
         line-height: normal;
     }
 
     .a .b {
         position: absolute;
-        width: 42px;
-        top: 230px;
-        left: 456px;
+        width: 26px;
+        top: 144px;
+        left: 280px;
         font-family: "Inter-Bold", Helvetica;
         font-weight: 700;
         color: #000000;
-        font-size: 12px;
+        font-size: 7.5px;
         letter-spacing: 0;
         line-height: normal;
     }
 
-    .a .rectangle-10 {
+    .a .rectangle-8 {
         position: absolute;
-        width: 101px;
-        height: 20px;
-        top: 253px;
-        left: 381px;
-        object-fit: cover;
+        width: 320.5px;
+        height: 29px;
+        top: 157px;
+        left: -1px;
+        background-color: #ffffff;
+        border: 2px solid;
+        border-color: #000000;
     }
 
-    .a .rectangle-11 {
+    .a .rectangle-9 {
         position: absolute;
-        width: 99px;
-        height: 21px;
-        top: 253px;
-        left: 10px;
-        object-fit: cover;
-    }
-
-    .a .rectangle-12 {
-        position: absolute;
-        width: 171px;
-        height: 32px;
-        top: 255px;
-        left: 169px;
+        width: 64px;
+        height: 10px;
+        top: 166px;
+        left: 241px;
         object-fit: cover;
     }
 
     .a .text-wrapper-9 {
         position: absolute;
-        width: 103px;
-        top: 277px;
-        left: 15px;
+        width: 92px;
+        top: 175px;
+        left: 226px;
         font-family: "Inter-Bold", Helvetica;
         font-weight: 700;
         color: #000000;
-        font-size: 7px;
+        font-size: 4.4px;
+        text-align: center;
         letter-spacing: 0;
         line-height: normal;
     }
 
-    .a .text-wrapper-10 {
+    .a .p {
         position: absolute;
-        width: 141px;
-        top: 276px;
-        left: 363px;
-        font-family: "Inter-Bold", Helvetica;
-        font-weight: 700;
+        width: 185px;
+        height: 18px;
+        top: 167px;
+        left: 17px;
+        font-family: "Inter-SemiBold", Helvetica;
+        font-weight: 600;
         color: #000000;
-        font-size: 7px;
-        text-align: center;
+        font-size: 5px;
         letter-spacing: 0;
         line-height: normal;
+    }
+
+    .a .overlap {
+        width: 319px;
+        top: 430px;
+        left: 137px;
+        //background-image: url(./img/image.svg);
+        //background-size: 100% 100%;
+        position: absolute;
+        height: 186px;
+    }
+
+    .a .rectangle-stroke-1 {
+        position: absolute;
+        width: 319.394px;
+        height: 186px;
+        border: 2px solid #000;
+        background: #FFF;
+        box-shadow: 0px 2.50505px 2.50505px 0px rgba(0, 0, 0, 0.25);
+    }
+
+
+
+.a .if-found-please {
+    position: absolute;
+    width: 266px;
+    top: 25px;
+    left: 26px;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 8.1px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+    .a .text-wrapper-10 {
+        font-weight: 600;
+    }
+
+    .a .text-wrapper-11 {
+        font-family: "Hind-SemiBold", Helvetica;
+        font-weight: 600;
+    }
+
+    .a .element-human {
+        position: absolute;
+        width: 246px;
+        top: 58px;
+        left: 26px;
+        font-family: "Hind-SemiBold", Helvetica;
+        font-weight: 400;
+        color: #000000;
+        font-size: 8.1px;
+        letter-spacing: 0;
+        line-height: normal;
+    }
+
+    .a .text-wrapper-12 {
+        font-family: "Hind-Regular", Helvetica;
+    }
+
+    .a .text-wrapper-13 {
+        font-family: "Inter-SemiBold", Helvetica;
+        font-weight: 600;
     }

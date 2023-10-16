@@ -15,6 +15,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
+using System.ComponentModel;
 
 namespace EmployeeRegister.Controllers
 {
@@ -551,9 +552,122 @@ namespace EmployeeRegister.Controllers
                  _context.Entry(employeeMaster).Property(x => x.FormAData).IsModified = false;
              }
 
-             ///later going to be deleted
+             if(employeeMaster.EmployeeName != null)
+            {
 
-            string id1 = Convert.ToString(employeeMaster.EmployeeVtccertificateNo);
+                _context.Entry(employeeMaster).Property(x => x.EmployeeName).IsModified = true;
+            }
+
+
+            if (employeeMaster.EmployeeFathersName != null)
+            {
+
+                _context.Entry(employeeMaster).Property(x => x.EmployeeFathersName).IsModified = true;
+            }
+
+
+            if (employeeMaster.EmployeeDesignation != null)
+            {
+
+                _context.Entry(employeeMaster).Property(x => x.EmployeeDesignation).IsModified = true;
+            }
+
+            if (employeeMaster.EmployeeBatchNo != null)
+            {
+
+                _context.Entry(employeeMaster).Property(x => x.EmployeeBatchNo).IsModified = true;
+            }
+
+            if (employeeMaster.EmployeeDateOfBirth != null)
+            {
+
+                _context.Entry(employeeMaster).Property(x => x.EmployeeDateOfBirth).IsModified = true;
+            }
+
+            if (employeeMaster.EmployeeStartDate != null)
+            {
+
+                _context.Entry(employeeMaster).Property(x => x.EmployeeStartDate).IsModified = true;
+            }
+            if (employeeMaster.EmployeeEndDate != null)
+            {
+
+                _context.Entry(employeeMaster).Property(x => x.EmployeeEndDate).IsModified = true;
+            }
+
+            if (employeeMaster.EmployeeAadharNo != null)
+            {
+
+                _context.Entry(employeeMaster).Property(x => x.EmployeeAadharNo).IsModified = true;
+            }
+
+            if (employeeMaster.Address != null)
+            {
+
+                _context.Entry(employeeMaster).Property(x => x.Address).IsModified = true;
+            }
+
+            if (employeeMaster.FormANo != null)
+            {
+
+                _context.Entry(employeeMaster).Property(x => x.FormANo).IsModified = true;
+            }
+
+            if (employeeMaster.IMENo != null)
+            {
+
+                _context.Entry(employeeMaster).Property(x => x.IMENo).IsModified = true;
+            }
+
+
+            if (employeeMaster.EmployeeIMEDate != null)
+            {
+
+                _context.Entry(employeeMaster).Property(x => x.EmployeeIMEDate).IsModified = true;
+            }
+
+            if (employeeMaster.MobileNumber != null)
+            {
+
+                _context.Entry(employeeMaster).Property(x => x.MobileNumber).IsModified = true;
+            }
+
+            if (employeeMaster.EmergencyMobileNumber != null)
+            {
+
+                _context.Entry(employeeMaster).Property(x => x.EmergencyMobileNumber).IsModified = true;
+            }
+
+            if (employeeMaster.BloodGroup != null)
+            {
+
+                _context.Entry(employeeMaster).Property(x => x.BloodGroup).IsModified = true;
+            }
+
+            if (employeeMaster.IdCardNo != null)
+            {
+
+                _context.Entry(employeeMaster).Property(x => x.IdCardNo).IsModified = true;
+            }
+
+            if (employeeMaster.VtcNo != null)
+            {
+
+                _context.Entry(employeeMaster).Property(x => x.VtcNo).IsModified = true;
+            }
+
+            if (employeeMaster.EmployeeNo != null)
+            {
+
+                _context.Entry(employeeMaster).Property(x => x.EmployeeNo).IsModified = true;
+            }
+
+
+
+
+        ///later going to be deleted
+
+        string id1 = Convert.ToString(employeeMaster.EmployeeVtccertificateNo);
             string barCodeText = $"https://localhost:7217/EmployeeMasters/Details/{id1}";
             employeeMaster.Barcode = generateBarcode();
             byte[]? bytes4 = null; 

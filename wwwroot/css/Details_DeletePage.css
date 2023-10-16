@@ -64,3 +64,9 @@
     margin-right: auto;
 
 }
+
+#HASH {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}

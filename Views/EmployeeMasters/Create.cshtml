@@ -220,6 +220,11 @@
                             <span asp-validation-for="EmployeeFathersName" class="text-danger"></span>
                         </div>
 
+                        <div class="form-group mb-3">
+                            <label asp-for="NameOfAgency" class="control-label small mb-1">  </label>
+                            <input asp-for="NameOfAgency" class="form-control" />
+                            <span asp-validation-for="NameOfAgency" class="text-danger"></span>
+                        </div>
 
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
@@ -268,24 +273,40 @@
                             </div>
                         </div>
 
+                        <!-- Form Row        -->
+                        <div class="row gx-3 mb-3">
+                            <div class="form-group col-md-6">
+                                <label asp-for="EmployeeDateOfBirth" class="control-label small mb-1">Date of Birth</label>
+                                <input asp-for="EmployeeDateOfBirth" class="form-control" />
+                                <span asp-validation-for="EmployeeDateOfBirth" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label asp-for="DoJ" class="control-label small mb-1">VTC End Date</label>
+                                <input asp-for="DoJ" class="form-control" />
+                                <span asp-validation-for="DoJ" class="text-danger"></span>
+                            </div>
+                        </div>
 
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
-                            <!-- Form Group (phone number)-->
-                            @*<div class="col-md-6">
-                            <label class="small mb-1" for="inputPhone">Phone number</label>
-                            <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567">
-                            </div>
-                            <!-- Form Group (birthday)-->
-                            <div class="col-md-6">
-                            <label class="small mb-1" for="inputBirthday">Birthday</label>
-                            <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
-                            </div>*@
-
                             <div class="form-group col-md-6">
                                 <label asp-for="MobileNumber" class="control-label small mb-1"></label>
                                 <input asp-for="MobileNumber" class="form-control" />
                                 <span asp-validation-for="MobileNumber" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label asp-for="EmergencyMobileNumber" class="control-label small mb-1"></label>
+                                <input asp-for="EmergencyMobileNumber" class="form-control" />
+                                <span asp-validation-for="EmergencyMobileNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <!-- Form Row-->
+                        <div class="row gx-3 mb-3">
+                            <div class="form-group col-md-6">
+                                <label asp-for="FormANo" class="control-label small mb-1 "></label>
+                                <input asp-for="FormANo" class="form-control" />
+                                <span asp-validation-for="FormANo" class="text-danger"></span>
                             </div>
                             <div class="form-group col-md-6">
                                 <label asp-for="BloodGroup" class="control-label small mb-1"></label>
@@ -357,15 +378,15 @@
                         </div>
 
                         <div class="row gx-3 mb-3">
-                        <div class="form-group">
+                            <div class="form-group col-md-6">
                                 <label asp-for="VtcCertificate" class="control-label">Upload Vtc Certificate</label>
-                                <input type="file" asp-for="VtcCertificate" accept=".pdf" name="VtcCertificate" />
+                                <input type="file" asp-for="VtcCertificate" accept=".pdf" name="VtcCertificate" class="form-control" />
                                 <span asp-validation-for="VtcCertificate" class="text-danger"></span>
                         </div>
 
-                            <div class="form-group">
+                            <div class="form-group col-md-6">
                                 <label asp-for="FormO" class="control-label">Upload  Form O</label>
-                                <input type="file" asp-for="FormO" accept=".pdf" name="FormO" />
+                                <input type="file" asp-for="FormO" accept=".pdf" name="FormO" class="form-control"  />
                                 <span asp-validation-for="FormO" class="text-danger"></span>
                             </div>
                         </div>
@@ -373,7 +394,7 @@
                         <div class="row gx-3 mb-3">
                             <div class="form-group">
                                 <label asp-for="FormA" class="control-label">Upload FormA</label>
-                                <input type="file" asp-for="FormA" accept=".pdf" name="FormA" />
+                                <input type="file" asp-for="FormA" accept=".pdf" name="FormA" class="form-control" />
                                 <span asp-validation-for="FormA" class="text-danger"></span>
                             </div>
                             </div>
@@ -382,10 +403,10 @@
                         @*<button class="btn btn-primary" type="button">Save changes</button>*@
                         <div class="form-group">
                             <input type="submit" value="Save" class="btn btn-primary" />
+                            <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Index", "EmployeeMasters")'" >Back to list</button>
+
                         </div>
-                        <div asp-action="Index">
-                            <input type="submit" value="Back to List" class="btn btn-success" />
-                        </div>
+                        @*<a asp-action="Index">Back to List</a>*@
 
 
                     </div>

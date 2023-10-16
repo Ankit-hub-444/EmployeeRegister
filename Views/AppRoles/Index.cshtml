@@ -1,14 +1,17 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@model IEnumerable<IdentityRole>
+ @model IEnumerable<IdentityRole>
 
 @{
     ViewData["Title"] = "Application Roles";
 }
 
-<h1>View Roles</h1>
-<p>
-    <a asp-action="Create">Create Role</a>
-</p>
+<link href="~/css/FrontPage.css" rel="stylesheet" type="text/css" />
+
+<div id="HASH">
+    <h1>View Roles</h1>
+    <a class="nav-link text-dark" asp-area="" asp-controller="AppRoles" asp-action="Create"><input type="button" class="btn btn-success" value="Create Role"></a>
+
+</div>
 
 <table class="table">
     <thead>
@@ -29,3 +32,36 @@
         }
     </tbody>
 </table>
+
+
+@*@model IEnumerable<EmployeeRegister.Models.ApplicationUser>
+@{
+    ViewData["Title"] = "User";
+}
+
+<div class="text-black-center">
+ if(@Model!=null && @Model.Any()){
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Nmae</th>
+
+                <th>LastName</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+ }
+
+</div>
+
+*@

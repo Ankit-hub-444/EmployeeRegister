@@ -22,19 +22,29 @@ namespace EmployeeRegister.Models
 
         [DisplayName("Batch No")]
 
-        public int? EmployeeBatchNo { get; set; }
+        public string? EmployeeBatchNo { get; set; }
 
         [DisplayName("Date of Birth")]
 
-        public DateTime? EmployeeDateOfBirth { get; set; }
+        public string? EmployeeDateOfBirth { get; set; }
 
-        [DisplayName("Start Date")]
+        [DisplayName("Name of Agency")]
 
-        public DateTime? EmployeeStartDate { get; set; }
+        public string? NameOfAgency { get; set; }
 
-        [DisplayName("End Date")]
 
-        public DateTime? EmployeeEndDate { get; set; }
+        [DisplayName("Date of Joining")]
+
+        public string? DoJ { get; set; }
+
+
+        [DisplayName("VTC Start Date")]
+
+        public string? EmployeeStartDate { get; set; }
+
+        [DisplayName("VTC End Date")]
+
+        public string? EmployeeEndDate { get; set; }
 
         [DisplayName("Aadhar Number")]
 
@@ -55,7 +65,7 @@ namespace EmployeeRegister.Models
 
         [DisplayName("IME Date")]
 
-        public DateTime? EmployeeIMEDate { get; set; }
+        public string? EmployeeIMEDate { get; set; }
 
 
         [DisplayName("Mobile Number")]
@@ -93,7 +103,7 @@ namespace EmployeeRegister.Models
         [NotMapped]
         [DisplayName("Upload Signature File")]
 
-        public IFormFile? Signature { get; set; } 
+        public IFormFile? Signature { get; set; }
 
         public string? AuthoritySignatureData { get; set; }
 
@@ -112,7 +122,7 @@ namespace EmployeeRegister.Models
         [DisplayName("Upload FormO File")]
         public IFormFile? FormO { get; set; }
 
-        public string? FormAData { get; set;}
+        public string? FormAData { get; set; }
         [NotMapped]
         [DisplayName("Upload FormA File")]
         public IFormFile? FormA { get; set; }
@@ -124,6 +134,7 @@ namespace EmployeeRegister.Models
         public string? Barcode { get; set; }
 
 
-       
+
+
     }
 }

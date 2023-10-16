@@ -1,0 +1,109 @@
+﻿
+@using Microsoft.AspNetCore.Identity;
+@model EmployeeRegister.Core.ViewModels.EditUserViewModel;
+
+
+
+<div class="container">
+      <div class="py-5 text-center">
+        <h2>Edit User</h2>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8 order-md-1">
+            @using (Html.BeginForm("OnPost", "Administration")) {
+                @Html.HiddenFor(h=>@Model.User.Id);
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="@Model.User.FirstName" class="form-label">First name</label>
+                        <input asp-for="@Model.User.FirstName" class="form-control" value="@Model.User.FirstName" autocomplete="username" aria-required="true">
+                        <span asp-validation-for="@Model.User.LastName" class="text-danger"></span>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="@Model.User.LastName" class="form-label">Last name</label>
+                        <input asp-for="@Model.User.LastName" class="form-control" value="@Model.User.LastName" autocomplete="username" aria-required="true">
+                        <span asp-validation-for="@Model.User.LastName" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label asp-for="@Model.User.UserName" class="form-label">UserName</label>
+                    <input asp-for="@Model.User.UserName" class="form-control" value="@Model.User.UserName" autocomplete="username" aria-required="true">
+                    <span asp-validation-for="@Model.User.UserName" class="text-danger"></span>
+
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="@Model.User.Email" class="form-label">Email</label>
+                    <input asp-for="@Model.User.Email" class="form-control" value="@Model.User.Email" autocomplete="username" aria-required="true">
+                    <span asp-validation-for="@Model.User.Email" class="text-danger"></span>
+
+                </div>
+
+
+
+                <h4 class="mb-3">Roles</h4>
+                <div class="d-block my-3">
+                    @for (int i = 0; i < @Model.Roles.Count(); i++) {
+                        <div class="form-check">
+                            @Html.CheckBoxFor(c=> @Model.Roles[i].Selected)
+                         @Html.HiddenFor(h=>@Model.Roles[i].Value)
+                         @Html.LabelFor(l=>@Model.Roles[i].Selected,@Model.Roles[i].Text,new {@class="form-check-label"})
+                         @Html.HiddenFor(h=>@Model.Roles[i].Text)
+                            </div>
+                    }
+    
+            </div>
+            @*<div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="cc-name">Name on card</label>
+                <input type="text" class="form-control" id="cc-name" placeholder="" required="">
+                <small class="text-muted">Full name as displayed on card</small>
+                <div class="invalid-feedback">
+                  Name on card is required
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="cc-number">Credit card number</label>
+                <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+                <div class="invalid-feedback">
+                  Credit card number is required
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="cc-expiration">Expiration</label>
+                <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
+                <div class="invalid-feedback">
+                  Expiration date required
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="cc-expiration">CVV</label>
+                <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+                <div class="invalid-feedback">
+                  Security code required
+                </div>
+              </div>
+            </div>
+                    <hr class="mb-4">*@
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Save</button>
+        
+          }
+        </div>
+      </div>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">© 2022-2023 NTPC</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">Privacy</a></li>
+          @*<li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>*@
+        </ul>
+      </footer>
+    </div>

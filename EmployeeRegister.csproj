@@ -32,6 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="NewFolder\" />
     <Folder Include="wwwroot\UploadedSignature\" />
     <Folder Include="wwwroot\UploadedImages\" />
   </ItemGroup>

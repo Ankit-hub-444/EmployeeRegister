@@ -11,56 +11,77 @@
 
 </head>
 <body>
-
     <div id="parentDiv">
-    <div class="a" >
-        <div class="overlap-group">
-            <div class="overlap">
-                <div class="div">
-                    <div class="rectangle"></div>
-                    <div class="rectangle-2"></div>
-                        @*<img class="img" src="@Url.Content("~")/UploadedImages/@Model.ImageFileName"  asp-append-version="true" />*@
-                        <img class="img" src="data:image/jpg;base64,@Model.ImageFileData" asp-append-version="true" />
+    <div class="a">
+      <div class="overlap-group">
+        <div class="rectangle-stroke">
+        <div class="rectangle">
+        <p class="DULANGA-COAL-MINING">DULANGA COAL MINING PROJECT</p>
+        <div class="name-of-agency-UPL"><br />Name of Agency:-UPL Limited</div>
+                        <object data="data:image/jpg;base64,@Model.BarcodeImageData" class="img" height="120" width="120" asp-append-version="true" type="image/jpeg" class="rectangle-2">
+                            <img src="~/FrontPageImage/no_image_available.png" />
+                        </object>
 
-                        <img class="rectangle-3" src="~/FrontPageImage/ntpc_logo.jpg" />
-                    <div class="rectangle-4"></div>
-                    <p class="DULANGA-COAL-MINING">DULANGA COAL MINING PROJECT</p>
-                    <div class="name-of-agency-UPL"><br />Name of Agency:-UPL Limited</div>
-                    <div class="rectangle-5"></div>
-                    <p class="name-ankit-anand">
-                        <span class="text-wrapper">Name: @Model.EmployeeName<br /></span> <span class="span"><br /></span>
-                    </p>
-                    <div class="text-wrapper-2">Father’s Name:@Model.EmployeeFathersName</div>
-                    <div class="dob">
-                        Dob:20.03.2000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Designation:Dozer Operator
                     </div>
-                    <div class="text-wrapper-3">Emerg.Phone:9123418147</div>
-                    <div class="rectangle-6"></div>
-                    <div class="text-wrapper-4">Form “A” No</div>
-                    <div class="text-wrapper-5">424</div>
-                    <div class="rectangle-7"></div>
-                    <div class="text-wrapper-6">IME No</div>
-                    <div class="element">@Model.IMENo<br />08.04.2019</div>
-                    <div class="rectangle-8"></div>
-                    <div class="VTC-no">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VTC No</div>
-                    <div class="text-wrapper-7">75</div>
-                     <div class="rectangle-9"></div>
-                    @*<img class="rectangle-9" src="img/rectangle-9.svg" />*@
-                    <div class="text-wrapper-8">Blood Group</div>
-                    <div class="b">&nbsp;&nbsp;B+</div>
-                    <img class="rectangle-10"  src="data:image/jpg;base64,@Model.AuthoritySignatureData"  asp-append-version="true" />
-
-                </div>
-                    <img class="rectangle-11"  src="data:image/jpg;base64,@Model.SignatureData"  asp-append-version="true" />
-
-                    <img class="rectangle-12" src="data:image/jpg;base64,@Model.BarcodeImageData" asp-append-version="true" />
-
+                    <object data="data:image/jpg;base64,@Model.ImageFileData" height="120" width="120" asp-append-version="true" type="image/jpeg" class="rectangle-2">
+                        <img src="~/FrontPageImage/no_image_available.png" />
+                    </object>
+        <div class="div"></div>
+        <p class="name-ankit-anand">
+          <span class="text-wrapper">Name: Ankit Anand<br /></span> <span class="span"><br /></span>
+        </p>
+        <div class="text-wrapper-2">Father’s Name:Arbind Kumar Mehta</div>
+        <div class="doj">
+          DoJ:20.03.2000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Designation
+          :Dozer Operator
+        </div>
+        <div class="text-wrapper-3">Emerg. Phone:9123418147</div>
+        <div class="rectangle-3"></div>
+        <div class="rectangle-4"></div>
+        <div class="text-wrapper-4">Form “A” No</div>
+        <div class="text-wrapper-5">424</div>
+        <div class="rectangle-5"></div>
+        <div class="text-wrapper-6">IME/PME No</div>
+        <div class="element">426<br />08.04.2019</div>
+        <div class="rectangle-6"></div>
+        <div class="VTC-no">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VTC No</div>
+        <div class="text-wrapper-7">309</div>
+        <div class="rectangle-7"></div>
+        <div class="text-wrapper-8">Blood Group</div>
+        <div class="b">&nbsp;&nbsp;B+</div>
+        <div class="rectangle-8"></div>
+                    <object data="data:image/jpg;base64,@Model.AuthoritySignatureData" class="rectangle-9" height="120" width="120" asp-append-version="true" type="image/jpeg" class="rectangle-2">
+                        <img src="~/FrontPageImage/no_image_available.png" />
+                    </object>
+        <div class="text-wrapper-9">SIGNATURE OF ISSUING AUTHORITY</div>
+        <p class="p">This is a system-generated ID Card,hence requires no signature of holder.</p>
+       </div>
+      </div>
+            <div class="overlap">
+        <div class="rectangle-stroke-1">
+        <p class="if-found-please">
+          <span class="text-wrapper-10">If&nbsp;&nbsp;found,please return at following address:<br /></span>
+          <span class="text-wrapper-11">मिलने पर, इस कार्ड को कृपया इस पते पर लौटाए:</span>
+        </p>
+        <p class="element-human">
+          <span class="text-wrapper-10"
+            >मानव संसाधन विभाग
+एनटीपीसी लिमिटेड, दुलंगा कोयला खनन परियोजना
+एटी- खपुरिकाछार, पीओ-सांगहुमुड़ा
+सुंदरगढ़-
+            770013, ओडिशा<br
+          /></span>
+          <span class="text-wrapper-12"><br /></span>
+          <span class="text-wrapper-13"
+            >Human Resource Department<br />NTPC Limited,Dulanga Coal Mining Project<br />AT- Khapurikachhar,
+            PO-Sanghumuda<br />Sundargarh- 770013,Odisha</span
+          >
+        </p>
+      </div>
 
             </div>
-            <div class="text-wrapper-9">SIGNATURE OF HOLDER</div>
-            <div class="text-wrapper-10">SIGNATURE OF ISSUING AUTHORITY</div>
-        </div>
-    </div>
+
+
     </div>
     <a id="printPDF" class="btn btn-primary">Print</a>
 

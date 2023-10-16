@@ -8,4 +8,6 @@ namespace EmployeeRegister.Models
         public string? LastName { get; set;}
 
     }
+
+    public class ApplicationRole:IdentityRole { }
 }

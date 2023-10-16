@@ -10,7 +10,7 @@
     justify-content: center;
     align-self: stretch;
     object-fit: fill;*/
-    background-image: url("../FrontPageImage/rt-26100-.jpg");
+    background-image: url("../FrontPageImage/IMAGE (6).png");
     width: 90vw;
     height: 100vh;
     background-size: 100% 100%;
@@ -22,7 +22,7 @@ nav {
 }
 
 .splash {
-    background: url("../FrontPageImage/rt-26100-.jpg") no-repeat; /*remove silver and fill the proper url*/
+    background: url("../FrontPageImage/IMAGE (6).png") no-repeat; /*remove silver and fill the proper url*/
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
