@@ -1,0 +1,88 @@
+﻿@model IEnumerable<EmployeeRegister.Models.EmployeeMaster>
+
+@{
+    ViewData["Title"] = "VTC Details";
+    int intSno = 0;
+}
+
+<link href="~/css/FrontPage.css" rel="stylesheet" type="text/css" />
+
+<div id="HASH">
+    <h1>VTC Details</h1>
+    @* <asp:LinkButton asp-action="Create" type="button" class="btn btn-success" runat="server">Create New</asp:LinkButton>*@
+
+</div>
+
+<vc:search-bar search-pager="@ViewBag.SearchPager">
+</vc:search-bar>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Sno
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeFathersName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VtcNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeAadharNo)
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.Image)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            intSno = intSno + 1;
+
+            <tr>
+                <td>
+                    @intSno
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeFathersName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VtcNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeAadharNo)
+                </td>
+                @*<td>
+
+            <img src="data:image/jpg;base64,@item.ImageFileData" height="120" width="120" asp-append-version="true" />
+
+            </td>*@
+                <td>
+                    @*button asp-action="Details" asp-route-id="@item.EmployeeVtccertificateNo" type="button" class="btn btn-primary">Details</button>*@
+                    <a asp-action="Edit" asp-route-id="@item.EmployeeVtccertificateNo"><input type="button" class="btn btn-primary" value="Fill details"></a> 
+
+
+                </td>
+                @* <td>
+            <a asp-action="Edit" asp-route-id="@item.EmployeeVtccertificateNo">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.EmployeeVtccertificateNo">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.EmployeeVtccertificateNo">Delete</a>
+            class="rounded-circle" width="40" height="40"
+            </td>
+            *@
+            </tr>
+        }
+    </tbody>
+</table>
+
+

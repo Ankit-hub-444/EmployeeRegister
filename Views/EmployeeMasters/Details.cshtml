@@ -127,17 +127,21 @@
 
         <!-- Breadcrumb -->
             <div id="HASH" class="blue-msg">
+                @if (User.IsInRole("General") || User.IsInRole("Admin") || User.IsInRole("NTPC Employee"))
+                        {
                 <form asp-action="IdCardDetails" asp-route-id="@Model.EmployeeVtccertificateNo">
                     <input type="submit" value="Generate Id Card" class="btn btn-success" />
                 </form>
+                        }
                 @*<a asp-action="Delete" asp-route-id="@Model.EmployeeVtccertificateNo">Delete</a>
                 <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Index", "EmployeeMasters")'">Delete</button>
                 <form asp-action="Delete" asp-route-id="@Model.EmployeeVtccertificateNo">
                     <input type="submit" value="Delete" class="btn btn-success" />
                 </form>*@
-
-                <a asp-action="Delete" asp-route-id="@Model.EmployeeVtccertificateNo"><input type="button" class="btn btn-danger" value="Delete"></a> 
-
+                      @if (User.IsInRole("Admin"))
+                        {
+                          <a asp-action="Delete" asp-route-id="@Model.EmployeeVtccertificateNo"><input type="button" class="btn btn-danger" value="Delete"></a> 
+                        }
             </div>
 
         <!-- /Breadcrumb -->
@@ -162,7 +166,10 @@
 
                                     @*<a asp-action="Edit" asp-route-id="@Model?.EmployeeVtccertificateNo">Edit</a> |
                                     <a asp-action="Index">Back to List</a>*@
-                                        <a asp-action="Edit" asp-route-id="@Model.EmployeeVtccertificateNo"><input type="button" class="btn btn-primary" value="Edit"></a> |
+                                        @if (User.IsInRole("Admin") || User.IsInRole("NTPC Employee"))
+                                  {
+                                        <a asp-action="Edit" asp-route-id="@Model.EmployeeVtccertificateNo"><input type="button" class="btn btn-primary" value="Edit"></a> 
+                                  }
                                        <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Index", "EmployeeMasters")'">Back to list</button>
 
 

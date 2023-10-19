@@ -29,11 +29,29 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="EmployeeMasters" asp-action="Index">VTC Register</a>
                         </li>
 
+                        @if (User.IsInRole("General") || User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="EmployeeMasters" asp-action="GeneralIndex">Fill Details</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Doctor") || User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="EmployeeMasters" asp-action="DoctorIndex">Fill Details</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("VTC Officer") || User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="EmployeeMasters" asp-action="VTCOfficerIndex">Fill Details</a>
+                            </li>
+                        }
 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Administration" asp-action="Index">Admin</a>
                         </li>
-                        @* @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                        @* @if (signInManager.IsSignedIn(User) && || User.IsInRole("Admin"))
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"

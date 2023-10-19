@@ -16,6 +16,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
 using System.ComponentModel;
+using Microsoft.IdentityModel.Tokens;
 
 namespace EmployeeRegister.Controllers
 {
@@ -32,7 +33,7 @@ namespace EmployeeRegister.Controllers
         }
 
         // GET: EmployeeMasters
-        [Authorize(Roles = "Ntpc Employee,Admin,Viewer")]
+        [Authorize(Roles = "NTPC Employee,Admin,Viewer,General,Doctor,VTC Officer")]
         public async Task<IActionResult> Index(string SearchText="",int pg=1)
         {
             List<EmployeeMaster> employees;
@@ -95,8 +96,264 @@ namespace EmployeeRegister.Controllers
 
         }
 
+
+
+        public async Task<IActionResult> GeneralIndex(string SearchText = "", int pg = 1)
+        {
+            List<EmployeeMaster> employees;
+
+            if (SearchText != "" && SearchText != null)
+            {
+                employees = await (from p in _context.EmployeeMasters
+                                   select new EmployeeMaster()
+                                   {
+                                       EmployeeVtccertificateNo = p.EmployeeVtccertificateNo,
+                                       EmployeeName = p.EmployeeName,
+                                       EmployeeFathersName = p.EmployeeFathersName,
+                                       EmployeeAadharNo = p.EmployeeAadharNo,
+                                       EmployeeDesignation = p.EmployeeDesignation,
+                                       IdCardNo = p.IdCardNo,
+                                       EmployeeDateOfBirth = p.EmployeeDateOfBirth,
+                                       DoJ = p.DoJ,
+                                       MobileNumber = p.MobileNumber,
+                                       EmergencyMobileNumber = p.EmergencyMobileNumber,
+                                       FormANo = p.FormANo,
+                                       BloodGroup = p.BloodGroup,
+                                       Address = p.Address,
+                                       EmployeeNo = p.EmployeeNo,
+                                        ImageFileData = p.ImageFileData,
+                                        SignatureData = p.SignatureData,
+                                        AuthoritySignatureData = p.AuthoritySignatureData,
+                                        FormAData = p.FormAData,
+                                    }).Where(e => e.EmployeeName.Contains(SearchText) || e.EmployeeAadharNo.Contains(SearchText)).Where(e => e.EmployeeFathersName == null ||
+                                    e.EmployeeAadharNo == null ||
+                                     e.EmployeeDesignation == null ||
+                                      e.IdCardNo == null ||
+                                       e.EmployeeDateOfBirth == null ||
+                                        e.DoJ == null ||
+                                         e.MobileNumber == null ||
+                                          e.EmergencyMobileNumber == null ||
+                                           e.FormANo == null ||
+                                            e.BloodGroup == null ||
+                                             e.Address == null ||
+                                              e.EmployeeNo == null  ||
+                                              e.ImageFileData == null ||
+                                                e.SignatureData == null ||
+                                                 e.AuthoritySignatureData == null ||
+                                                  e.FormAData == null
+                                    ).ToListAsync();
+                 /* return _context.EmployeeMasters != null ?
+               View(await _context.EmployeeMasters.Where(e=>e.EmployeeName.Contains(SearchText)).ToListAsync()) :
+               Problem("Entity set 'EmployeeMasterContext.EmployeeMasters'  is null.");*/
+                                   }
+            else
+            {
+                /*employees = await _context.EmployeeMasters*/
+                employees = await (from p in _context.EmployeeMasters
+                                   select new EmployeeMaster()
+                                   {
+                                       EmployeeVtccertificateNo = p.EmployeeVtccertificateNo,
+                                       EmployeeName = p.EmployeeName,
+                                       EmployeeFathersName = p.EmployeeFathersName,
+                                       EmployeeAadharNo = p.EmployeeAadharNo,
+                                       EmployeeDesignation = p.EmployeeDesignation,
+                                       IdCardNo=p.IdCardNo,
+                                       EmployeeDateOfBirth = p.EmployeeDateOfBirth,
+                                       DoJ= p.DoJ,
+                                       MobileNumber = p.MobileNumber,
+                                       EmergencyMobileNumber = p.EmergencyMobileNumber,
+                                       FormANo = p.FormANo,
+                                       BloodGroup = p.BloodGroup,
+                                       Address = p.Address,
+                                       EmployeeNo = p.EmployeeNo,
+                                       ImageFileData = p.ImageFileData,
+                                       SignatureData= p.SignatureData,
+                                       AuthoritySignatureData = p.AuthoritySignatureData,
+                                       FormAData=p.FormAData,
+                                   }).Where(e => e.EmployeeFathersName == null ||
+                                   e.EmployeeAadharNo == null ||
+                                    e.EmployeeDesignation== null ||
+                                     e.IdCardNo == null ||
+                                      e.EmployeeDateOfBirth == null ||
+                                       e.DoJ == null ||
+                                        e.MobileNumber == null ||
+                                         e.EmergencyMobileNumber == null ||
+                                          e.FormANo == null ||
+                                           e.BloodGroup == null ||
+                                            e.Address == null ||
+                                             e.EmployeeNo == null ||
+                                              e.ImageFileData == null ||
+                                               e.SignatureData == null ||
+                                                e.AuthoritySignatureData == null ||
+                                                 e.FormAData == null
+                                   ).ToListAsync();
+
+                /*return  _context.EmployeeMasters != null ?
+            View(await _context.EmployeeMasters.ToListAsync()) :
+            Problem("Entity set 'EmployeeMasterContext.EmployeeMasters'  is null.");*/
+            }
+
+            const int pageSize = 10;
+            if (pg < 1)
+            {
+                pg = 1;
+            }
+
+            int recsCount = employees.Count();
+            int recSkip = (pg - 1) * pageSize;
+            List<EmployeeMaster> retEmployees = employees.Skip(recSkip).Take(pageSize).ToList();
+
+
+            SPager SearchPager = new SPager(recsCount, pg, pageSize) { Action = "GeneralIndex", Controller = "EmployeeMasters", SearchText = SearchText };
+            ViewBag.SearchPager = SearchPager;
+
+            return View(retEmployees);
+
+        }
+
+        public async Task<IActionResult> VTCOfficerIndex(string SearchText = "", int pg = 1)
+        {
+            List<EmployeeMaster> employees;
+
+            if (SearchText != "" && SearchText != null)
+            {
+                employees = await (from p in _context.EmployeeMasters
+                                   select new EmployeeMaster()
+                                   {
+                                       EmployeeVtccertificateNo = p.EmployeeVtccertificateNo,
+                                       EmployeeName = p.EmployeeName,
+                                       EmployeeFathersName = p.EmployeeFathersName,
+                                       EmployeeAadharNo = p.EmployeeAadharNo,
+                                       EmployeeBatchNo = p.EmployeeBatchNo,
+                                       EmployeeStartDate = p.EmployeeStartDate,
+                                       EmployeeEndDate = p.EmployeeEndDate,
+                                       VtcNo=p.VtcNo,
+                                       VtcCertificateData=p.VtcCertificateData
+                                   }).Where(e => e.EmployeeName.Contains(SearchText) || e.EmployeeAadharNo.Contains(SearchText)).Where(e =>  e.EmployeeBatchNo == null ||
+                                     e.EmployeeStartDate == null ||
+                                      e.EmployeeEndDate == null ||
+                                       e.VtcNo == null ||
+                                        e.VtcCertificateData == null
+                                   ).ToListAsync();
+                /* return _context.EmployeeMasters != null ?
+              View(await _context.EmployeeMasters.Where(e=>e.EmployeeName.Contains(SearchText)).ToListAsync()) :
+              Problem("Entity set 'EmployeeMasterContext.EmployeeMasters'  is null.");*/
+            }
+            else
+            {
+                /*employees = await _context.EmployeeMasters*/
+                employees = await (from p in _context.EmployeeMasters
+                                   select new EmployeeMaster()
+                                   {
+                                       EmployeeVtccertificateNo = p.EmployeeVtccertificateNo,
+                                       EmployeeName = p.EmployeeName,
+                                       EmployeeFathersName = p.EmployeeFathersName,
+                                       EmployeeAadharNo = p.EmployeeAadharNo,
+                                       EmployeeBatchNo = p.EmployeeBatchNo,
+                                       EmployeeStartDate = p.EmployeeStartDate,
+                                       EmployeeEndDate = p.EmployeeEndDate,
+                                       VtcNo = p.VtcNo,
+                                       VtcCertificateData = p.VtcCertificateData
+                                   }).Where(e => e.EmployeeBatchNo == null ||
+                                     e.EmployeeStartDate == null ||
+                                      e.EmployeeEndDate == null ||
+                                       e.VtcNo == null ||
+                                        e.VtcCertificateData == null
+                                        ).ToListAsync();
+
+                /*return  _context.EmployeeMasters != null ?
+            View(await _context.EmployeeMasters.ToListAsync()) :
+            Problem("Entity set 'EmployeeMasterContext.EmployeeMasters'  is null.");*/
+            }
+
+            const int pageSize = 10;
+            if (pg < 1)
+            {
+                pg = 1;
+            }
+
+            int recsCount = employees.Count();
+            int recSkip = (pg - 1) * pageSize;
+            List<EmployeeMaster> retEmployees = employees.Skip(recSkip).Take(pageSize).ToList();
+
+
+            SPager SearchPager = new SPager(recsCount, pg, pageSize) { Action = "VTCOfficerIndex", Controller = "EmployeeMasters", SearchText = SearchText };
+            ViewBag.SearchPager = SearchPager;
+
+            return View(retEmployees);
+
+        }
+
+        public async Task<IActionResult> DoctorIndex(string SearchText = "", int pg = 1)
+        {
+            List<EmployeeMaster> employees;
+
+            if (SearchText != "" && SearchText != null)
+            {
+                employees = await (from p in _context.EmployeeMasters
+                                   select new EmployeeMaster()
+                                   {
+                                       EmployeeVtccertificateNo = p.EmployeeVtccertificateNo,
+                                       EmployeeName = p.EmployeeName,
+                                       EmployeeFathersName = p.EmployeeFathersName,
+                                       EmployeeAadharNo = p.EmployeeAadharNo,
+                                       IMENo = p.IMENo,
+                                       EmployeeIMEDate = p.EmployeeIMEDate,
+                                       FormOData = p.FormOData
+                                   }).Where(e => e.EmployeeName.Contains(SearchText) || e.EmployeeAadharNo.Contains(SearchText)).Where(e => e.IMENo == null ||
+                                   e.EmployeeIMEDate == null ||
+                                    e.FormOData == null
+                                   ).ToListAsync();
+                /* return _context.EmployeeMasters != null ?
+              View(await _context.EmployeeMasters.Where(e=>e.EmployeeName.Contains(SearchText)).ToListAsync()) :
+              Problem("Entity set 'EmployeeMasterContext.EmployeeMasters'  is null.");*/
+            }
+            else
+            {
+
+                employees = await (from p in _context.EmployeeMasters
+                                   select new EmployeeMaster()
+                                   {
+                                       EmployeeVtccertificateNo = p.EmployeeVtccertificateNo,
+                                       EmployeeName = p.EmployeeName,
+                                       EmployeeFathersName = p.EmployeeFathersName,
+                                       EmployeeAadharNo = p.EmployeeAadharNo,
+                                       IMENo =p.IMENo,
+                                       EmployeeIMEDate=p.EmployeeIMEDate,
+                                       FormOData=p.FormOData
+
+                                   }).Where(e => e.IMENo == null ||
+                                   e.EmployeeIMEDate == null ||
+                                    e.FormOData == null
+          
+                                   ).ToListAsync();
+
+                /*return  _context.EmployeeMasters != null ?
+            View(await _context.EmployeeMasters.ToListAsync()) :
+            Problem("Entity set 'EmployeeMasterContext.EmployeeMasters'  is null.");*/
+            }
+
+            const int pageSize = 10;
+            if (pg < 1)
+            {
+                pg = 1;
+            }
+
+            int recsCount = employees.Count();
+            int recSkip = (pg - 1) * pageSize;
+            List<EmployeeMaster> retEmployees = employees.Skip(recSkip).Take(pageSize).ToList();
+
+
+            SPager SearchPager = new SPager(recsCount, pg, pageSize) { Action = "DoctorIndex", Controller = "EmployeeMasters", SearchText = SearchText };
+            ViewBag.SearchPager = SearchPager;
+
+            return View(retEmployees);
+
+        }
+
+
         // GET: EmployeeMasters/Details/5
-        [Authorize(Roles = "Ntpc Employee,Admin,Viewer")]
+        [Authorize(Roles = "NTPC Employee,Admin,Viewer,General,Doctor,VTC Officer")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.EmployeeMasters == null)
@@ -134,12 +391,12 @@ namespace EmployeeRegister.Controllers
 
 
         // GET: EmployeeMasters/Create
-        [Authorize(Roles = "Ntpc Employee,Admin")]
+        [Authorize(Roles = "NTPC Employee,Admin,General")]
         public IActionResult Create()
         {
             return View();
         }
-        [Authorize(Roles = "Ntpc Employee,Admin")]
+        [Authorize(Roles = "NTPC Employee,Admin,General")]
         // POST: EmployeeMasters/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -355,7 +612,7 @@ namespace EmployeeRegister.Controllers
             return "";
         }
 
-        [Authorize(Roles = "Ntpc Employee,Admin")]
+        [Authorize(Roles = "NTPC Employee,Admin,General,Doctor,VTC Officer")]
         // GET: EmployeeMasters/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -373,7 +630,7 @@ namespace EmployeeRegister.Controllers
         }
 
 
-        [Authorize(Roles = "Ntpc Employee,Admin")]
+        [Authorize(Roles = "NTPC Employee,Admin,General,Doctor,VTC Officer")]
         // POST: EmployeeMasters/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.

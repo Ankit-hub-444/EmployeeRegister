@@ -10,7 +10,7 @@
     justify-content: center;
     align-self: stretch;
     object-fit: fill;*/
-    background-image: url("../FrontPageImage/IMAGE (6).png");
+    background-image: url("../FrontPageImage/sainik_sm_4.jpg");
     width: 90vw;
     height: 100vh;
     background-size: 100% 100%;
@@ -22,10 +22,12 @@ nav {
 }
 
 .splash {
-    background: url("../FrontPageImage/IMAGE (6).png") no-repeat; /*remove silver and fill the proper url*/
+    background: url("../FrontPageImage/sainik_sm.jpg") no-repeat; /*remove silver and fill the proper url*/
+
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    margin-bottom:0px;
     ;
 }
 .fill {

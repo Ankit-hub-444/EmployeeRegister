@@ -10,9 +10,12 @@
 <div id="HASH">
     <h1>VTC Register</h1>
    @* <asp:LinkButton asp-action="Create" type="button" class="btn btn-success" runat="server">Create New</asp:LinkButton>*@
+    @if (User.IsInRole("General") || User.IsInRole("Admin") || User.IsInRole("NTPC Employee"))
+       {
     <form asp-action="Create">
         <input type="submit" value="Create New" class="btn btn-success" /> 
     </form>
+           }
 </div>
 
 <vc:search-bar search-pager="@ViewBag.SearchPager">

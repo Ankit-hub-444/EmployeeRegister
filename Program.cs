@@ -42,7 +42,7 @@ var builder = WebApplication.CreateBuilder(args);
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
-          /*  using (var scope = app.Services.CreateScope())
+            using (var scope = app.Services.CreateScope())
             {
                 var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
                 var roles = new[] { "Admin", "NTPC Employee" };
@@ -75,7 +75,7 @@ var builder = WebApplication.CreateBuilder(args);
 
                     await userManager.AddToRoleAsync(user,"Admin");
                 }
-            }*/
+            }
             app.Run();
 
 

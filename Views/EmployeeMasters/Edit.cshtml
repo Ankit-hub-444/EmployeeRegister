@@ -122,76 +122,78 @@
 
             <div class="col-xl-4">
                 <!-- Profile picture card-->
-                <div class="card mb-4 mb-xl-0">
-                    <div class="card-header">Profile Picture</div>
-                    <div class="card-body text-center">
-                        <!-- Profile picture image-->
-                        <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                        <!-- Profile picture help block-->
-                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-                        <!-- Profile picture upload button-->
-                        @*<button class="btn btn-primary" type="button">Upload new image</button>*@
-                        <div class="form-group">
-                            <label asp-for="Image" class="control-label"></label>
-                            <input type="file" asp-for="Image" accept="image/*" name="Image" />
-                            <span asp-validation-for="Image" class="text-danger"></span>
+      
+                    <div class="card mb-4 mb-xl-0">
+                        <div class="card-header">Profile Picture</div>
+                        <div class="card-body text-center">
+                            <!-- Profile picture image-->
+                            @*<img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">*@
+                            <object data="data:image/jpg;base64,@Model.ImageFileData" height="120" width="120" asp-append-version="true" type="image/jpeg">
+                                <img src="~/FrontPageImage/no_image_available.png" />
+                            </object>
+
+
+                        @if (User.IsInRole("General") || User.IsInRole("Admin") || User.IsInRole("NTPC Employee"))
+                            {
+                                <!-- Profile picture help block-->
+                                <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                                <!-- Profile picture upload button-->
+                                @*<button class="btn btn-primary" type="button">Upload new image</button>*@
+                                <div class="form-group">
+                                    <label asp-for="Image" class="control-label"></label>
+                                    <input type="file" asp-for="Image" accept="image/*" name="Image" />
+                                    <span asp-validation-for="Image" class="text-danger"></span>
+                                </div>
+                            }
+                        </div>
+                       
+                    </div>
+
+
+
+                @if (User.IsInRole("General") || User.IsInRole("Admin") || User.IsInRole("NTPC Employee"))
+                {
+                    <div class="card mb-4 mb-xl-0">
+
+                        <div class="card-header">Signature</div>
+                        <div class="card-body text-center">
+                            <!-- Profile picture image-->
+                            @*<img class="img-account-profile rounded-circle mb-2" src="~/FrontPageImage/download.jpg" alt="">*@
+                            <object data="data:image/jpg;base64,@Model.SignatureData" height="120" width="120" asp-append-version="true" type="image/jpeg">
+                                <img src="~/FrontPageImage/no_image_available.png" />
+                            </object>
+                            <!-- Profile picture help block-->
+                            <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                            <!-- Profile picture upload button-->
+                            @*<button class="btn btn-primary" type="button">Upload new image</button>*@
+                            <div class="form-group">
+                                <label asp-for="Signature" class="control-label">Upload Manager's Signature</label>
+                                <input type="file" asp-for="Signature" accept="image/*" name="Signature" />
+                                <span asp-validation-for="Signature" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="card-header">Issuing Authority's Signature</div>
+                        <div class="card-body text-center">
+                            <!-- Profile picture image-->
+                            @*<img class="img-account-profile rounded-circle mb-2" src="~/FrontPageImage/download.jpg" alt="">*@
+                            <object data="data:image/jpg;base64,@Model.AuthoritySignatureData" height="120" width="120" asp-append-version="true" type="image/jpeg">
+                                <img src="~/FrontPageImage/no_image_available.png" />
+                            </object>
+
+                            <!-- Profile picture help block-->
+                            <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                            <!-- Profile picture upload button-->
+                            @*<button class="btn btn-primary" type="button">Upload new image</button>*@
+                            <div class="form-group">
+                                <label asp-for="AuthoritySignature" class="control-label">Upload Issuing Authority's Signature</label>
+                                <input type="file" asp-for="AuthoritySignature" accept="image/*" name="AuthoritySignature" />
+                                <span asp-validation-for="AuthoritySignature" class="text-danger"></span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card mb-4 mb-xl-0">
-
-                    @*<div class="card-header">Upload Files</div>
-                    <div class="card-body text-center">
-
-                    <header>
-                    <h4>Select File here</h4>
-                    </header>
-                    <p>Files Supported: PDF, TEXT, DOC , DOCX</p>
-                    @*<input type="file" hidden accept=".doc,.docx,.pdf" id="fileID" style="display:none;">
-                    <div class="drop_box">  </div>
-                    <button class="btn">Choose File</button>
-                    <div class="form-group">
-                    <label asp-for="Signature" class="control-label"></label>
-                    <input type="file" asp-for="Signature" accept="image/*" name="Signature" class="btn" />
-                    <span asp-validation-for="Signature" class="text-danger"></span>
-                    </div>
-
-                    </div>
-                    </div>
-
-                    </div>*@
-                    <div class="card-header">Signature</div>
-                    <div class="card-body text-center">
-                        <!-- Profile picture image-->
-                        <img class="img-account-profile rounded-circle mb-2" src="~/FrontPageImage/download.jpg" alt="">
-                        <!-- Profile picture help block-->
-                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-                        <!-- Profile picture upload button-->
-                        @*<button class="btn btn-primary" type="button">Upload new image</button>*@
-                        <div class="form-group">
-                            <label asp-for="Signature" class="control-label">Upload Manager's Signature</label>
-                            <input type="file" asp-for="Signature" accept="image/*" name="Signature" />
-                            <span asp-validation-for="Signature" class="text-danger"></span>
-                        </div>
-                    </div>
-
-
-                    <div class="card-header">Issuing Authority's Signature</div>
-                    <div class="card-body text-center">
-                        <!-- Profile picture image-->
-                        <img class="img-account-profile rounded-circle mb-2" src="~/FrontPageImage/download.jpg" alt="">
-                        <!-- Profile picture help block-->
-                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-                        <!-- Profile picture upload button-->
-                        @*<button class="btn btn-primary" type="button">Upload new image</button>*@
-                        <div class="form-group">
-                            <label asp-for="AuthoritySignature" class="control-label">Upload Issuing Authority's Signature</label>
-                            <input type="file" asp-for="AuthoritySignature" accept="image/*" name="AuthoritySignature" />
-                            <span asp-validation-for="AuthoritySignature" class="text-danger"></span>
-                        </div>
-                    </div>
-                </div>
-
+                }
 
             </div>
 
@@ -226,11 +228,17 @@
                             <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
                             <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="username">
                         </div>*@
+
+                   
                             <div class="form-group mb-3">
                                 <label asp-for="EmployeeName" class="control-label small mb-1"></label>
-                                <input asp-for="EmployeeName" class="form-control"  />
+                            <input asp-for="EmployeeName" class="form-control" readonly="readonly" />
                                 <span asp-validation-for="EmployeeName" class="text-danger"></span>
                             </div>
+
+
+                        @if (User.IsInRole("General") || User.IsInRole("Admin") || User.IsInRole("NTPC Employee"))
+                        {
                             <div class="form-group mb-3">
                                 <label asp-for="EmployeeFathersName" class="control-label small mb-1"></label>
                                 <input asp-for="EmployeeFathersName" class="form-control" />
@@ -238,11 +246,12 @@
                             </div>
 
 
-                        <div class="form-group mb-3">
-                            <label asp-for="NameOfAgency" class="control-label small mb-1">  </label>
-                            <input asp-for="NameOfAgency" class="form-control" />
-                            <span asp-validation-for="NameOfAgency" class="text-danger"></span>
-                        </div>
+                            <div class="form-group mb-3">
+                                <label asp-for="NameOfAgency" class="control-label small mb-1">  </label>
+                                <input asp-for="NameOfAgency" class="form-control" />
+                                <span asp-validation-for="NameOfAgency" class="text-danger"></span>
+                            </div>
+                        }
 
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
@@ -256,29 +265,30 @@
                                 <label class="small mb-1" for="inputLastName">Last name</label>
                                 <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Luna">
                             </div>*@
+                            @if (User.IsInRole("General") || User.IsInRole("Admin") || User.IsInRole("NTPC Employee"))
+                        {
                                 <div class="form-group col-md-6">
                                     <label asp-for="EmployeeDesignation" class="control-label small mb-1"></label>
                                     <input asp-for="EmployeeDesignation" class="form-control" />
                                     <span asp-validation-for="EmployeeDesignation" class="text-danger"></span>
                                 </div>
+                        }
+                            @if (User.IsInRole("General") || User.IsInRole("Admin") || User.IsInRole("NTPC Employee"))
+                            {
+
                                 <div class="form-group col-md-6">
-                                    <label asp-for="EmployeeBatchNo" class="control-label small mb-1">VTC Batch No</label>
-                                    <input asp-for="EmployeeBatchNo" class="form-control" />
-                                    <span asp-validation-for="EmployeeBatchNo" class="text-danger"></span>
+                                    <label asp-for="IdCardNo" class="control-label small mb-1"></label>
+                                    <input asp-for="IdCardNo" class="form-control" />
+                                    <span asp-validation-for="IdCardNo" class="text-danger"></span>
                                 </div>
+                            }
+
+
                         </div>
                         <!-- Form Row        -->
-                        <div class="row gx-3 mb-3">
-                            <!-- Form Group (organization name)-->
-                           @* <div class="col-md-6">
-                                <label class="small mb-1" for="inputOrgName">Organization name</label>
-                                <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="Start Bootstrap">
-                            </div>
-                            <!-- Form Group (location)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputLocation">Location</label>
-                                <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="San Francisco, CA">
-                            </div>*@
+                        @if (User.IsInRole("VTC Officer") || User.IsInRole("Admin") || User.IsInRole("NTPC Employee"))
+                        {
+                            <div class="row gx-3 mb-3">
                                 <div class="form-group col-md-6">
                                     <label asp-for="EmployeeStartDate" class="control-label small mb-1">VTC Start Date</label>
                                     <input asp-for="EmployeeStartDate" class="form-control" />
@@ -289,136 +299,146 @@
                                     <input asp-for="EmployeeEndDate" class="form-control" />
                                     <span asp-validation-for="EmployeeEndDate" class="text-danger"></span>
                                 </div>
-                        </div>
+                            </div>
+                        }
+
+                        @if (User.IsInRole("General") || User.IsInRole("Admin") || User.IsInRole("NTPC Employee"))
+                        {
+                            <!-- Form Row        -->
+                            <div class="row gx-3 mb-3">
+                                <div class="form-group col-md-6">
+                                    <label asp-for="EmployeeDateOfBirth" class="control-label small mb-1">Date of Birth</label>
+                                    <input asp-for="EmployeeDateOfBirth" class="form-control" />
+                                    <span asp-validation-for="EmployeeDateOfBirth" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label asp-for="DoJ" class="control-label small mb-1">Date of Joining</label>
+                                    <input asp-for="DoJ" class="form-control" />
+                                    <span asp-validation-for="DoJ" class="text-danger"></span>
+                                </div>
+                            </div>
 
 
-                        <!-- Form Row        -->
-                        <div class="row gx-3 mb-3">
-                            <div class="form-group col-md-6">
-                                <label asp-for="EmployeeDateOfBirth" class="control-label small mb-1">Date of Birth</label>
-                                <input asp-for="EmployeeDateOfBirth" class="form-control" />
-                                <span asp-validation-for="EmployeeDateOfBirth" class="text-danger"></span>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label asp-for="DoJ" class="control-label small mb-1">VTC End Date</label>
-                                <input asp-for="DoJ" class="form-control" />
-                                <span asp-validation-for="DoJ" class="text-danger"></span>
-                            </div>
-                        </div>
 
+                            <!-- Form Row-->
+                            <div class="row gx-3 mb-3">
+                                <div class="form-group col-md-6">
+                                    <label asp-for="MobileNumber" class="control-label small mb-1"></label>
+                                    <input asp-for="MobileNumber" class="form-control" />
+                                    <span asp-validation-for="MobileNumber" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label asp-for="EmergencyMobileNumber" class="control-label small mb-1"></label>
+                                    <input asp-for="EmergencyMobileNumber" class="form-control" />
+                                    <span asp-validation-for="EmergencyMobileNumber" class="text-danger"></span>
+                                </div>
+                            </div>
 
-                        <!-- Form Row-->
-                        <div class="row gx-3 mb-3">
-                            <div class="form-group col-md-6">
-                                <label asp-for="MobileNumber" class="control-label small mb-1"></label>
-                                <input asp-for="MobileNumber" class="form-control" />
-                                <span asp-validation-for="MobileNumber" class="text-danger"></span>
+                            <!-- Form Row-->
+                            <div class="row gx-3 mb-3">
+                                <div class="form-group col-md-6">
+                                    <label asp-for="FormANo" class="control-label small mb-1 "></label>
+                                    <input asp-for="FormANo" class="form-control" />
+                                    <span asp-validation-for="FormANo" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label asp-for="BloodGroup" class="control-label small mb-1"></label>
+                                    <input asp-for="BloodGroup" class="form-control" />
+                                    <span asp-validation-for="BloodGroup" class="text-danger"></span>
+                                </div>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label asp-for="EmergencyMobileNumber" class="control-label small mb-1"></label>
-                                <input asp-for="EmergencyMobileNumber" class="form-control" />
-                                <span asp-validation-for="EmergencyMobileNumber" class="text-danger"></span>
-                            </div>
-                        </div>
-
-                        <!-- Form Row-->
-                        <div class="row gx-3 mb-3">
-                            <div class="form-group col-md-6">
-                                <label asp-for="FormANo" class="control-label small mb-1 "></label>
-                                <input asp-for="FormANo" class="form-control" />
-                                <span asp-validation-for="FormANo" class="text-danger"></span>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label asp-for="BloodGroup" class="control-label small mb-1"></label>
-                                <input asp-for="BloodGroup" class="form-control" />
-                                <span asp-validation-for="BloodGroup" class="text-danger"></span>
-                            </div>
-                        </div>
-
+                        }
+                        @if (User.IsInRole("Doctor") || User.IsInRole("Admin") || User.IsInRole("NTPC Employee"))
+                        {
                             <div class="row gx-3 mb-3">
                                 <div class="form-group col-md-6">
                                     <label asp-for="IMENo" class="control-label small mb-1 "></label>
-                                <input asp-for="IMENo" class="form-control" />
-                                <span asp-validation-for="IMENo" class="text-danger"></span>
-                            </div>
+                                    <input asp-for="IMENo" class="form-control" />
+                                    <span asp-validation-for="IMENo" class="text-danger"></span>
+                                </div>
                                 <div class="form-group col-md-6">
                                     <label asp-for="EmployeeIMEDate" class="control-label small mb-1"></label>
-                                <input asp-for="EmployeeIMEDate" class="form-control" />
-                                <span asp-validation-for="EmployeeIMEDate" class="text-danger"></span>
+                                    <input asp-for="EmployeeIMEDate" class="form-control" />
+                                    <span asp-validation-for="EmployeeIMEDate" class="text-danger"></span>
+                                </div>
                             </div>
-                           </div>
-                        <!-- Form Group (email address)-->
-                        @*<div class="mb-3">
-                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com">
-                        </div>*@
+                        }
+
+                        @if (User.IsInRole("General") || User.IsInRole("Admin") || User.IsInRole("NTPC Employee"))
+                        {
                             <div lass="form-group mb-3">
                                 <label asp-for="Address" class="control-label small mb-1"></label>
                                 <input asp-for="Address" class="form-control" />
                                 <span asp-validation-for="Address" class="text-danger"></span>
                             </div>
-                        <!-- Form Row-->
-                       @* <div class="row gx-3 mb-3">
-                            <!-- Form Group (phone number)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputPhone">Phone number</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567">
-                            </div>
-                            <!-- Form Group (birthday)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
-                            </div>
-                        </div>*@
+                        }
 
                             <div class="row gx-3 mb-3">
+                            @if (User.IsInRole("VTC Officer") || User.IsInRole("Admin") || User.IsInRole("NTPC Employee"))
+                            {
                                 <div class="form-group col-md-6">
-                                    <label asp-for="IdCardNo" class="control-label small mb-1"></label>
-                                <input asp-for="IdCardNo" class="form-control" />
-                                <span asp-validation-for="IdCardNo" class="text-danger"></span>
-                            </div>
+                                    <label asp-for="EmployeeBatchNo" class="control-label small mb-1">VTC Batch No</label>
+                                    <input asp-for="EmployeeBatchNo" class="form-control" />
+                                    <span asp-validation-for="EmployeeBatchNo" class="text-danger"></span>
+                                </div>
+                            }
+
+                            @if (User.IsInRole("VTC Officer") || User.IsInRole("Admin") || User.IsInRole("NTPC Employee"))
+                        {
                                 <div class="form-group col-md-6">
                                     <label asp-for="VtcNo" class="control-label small mb-1"></label>
                                 <input asp-for="VtcNo" class="form-control" />
                                 <span asp-validation-for="VtcNo" class="text-danger"></span>
                             </div>
+                        }
                             </div>
+
+                        @if (User.IsInRole("General") || User.IsInRole("Admin") || User.IsInRole("NTPC Employee"))
+                        {
 
                             <div class="row gx-3 mb-3">
-                              <div class="form-group col-md-6">
-                                        <label asp-for=" EmployeeNo" class="control-label small mb-1"></label>
-                                <input asp-for=" EmployeeNo" class="form-control" />
-                                <span asp-validation-for=" EmployeeNo" class="text-danger"></span>
+                                <div class="form-group col-md-6">
+                                    <label asp-for=" EmployeeNo" class="control-label small mb-1"></label>
+                                    <input asp-for=" EmployeeNo" class="form-control" />
+                                    <span asp-validation-for=" EmployeeNo" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label asp-for="EmployeeAadharNo" class="control-labelsmall mb-1"></label>
+                                    <input asp-for="EmployeeAadharNo" class="form-control" />
+                                    <span asp-validation-for="EmployeeAadharNo" class="text-danger"></span>
+                                </div>
                             </div>
-                                    <div class="form-group col-md-6">
-                                <label asp-for="EmployeeAadharNo" class="control-labelsmall mb-1"></label>
-                                <input asp-for="EmployeeAadharNo" class="form-control" />
-                                <span asp-validation-for="EmployeeAadharNo" class="text-danger"></span>
-                            </div>
-                            </div>
-
+                        }
 
                         <div class="row gx-3 mb-3">
-                            <div class="form-group col-md-6">
+                            @if (User.IsInRole("VTC Officer") || User.IsInRole("Admin") || User.IsInRole("NTPC Employee"))
+                        {
+                            <div class="form-group" >
                                 <label asp-for="VtcCertificate" class="control-label">Change Vtc Certificate</label>
                                 <input type="file" asp-for="VtcCertificate" accept=".pdf" name="VtcCertificate" class="form-control" />
                                 <span asp-validation-for="VtcCertificate" class="text-danger"></span>
                             </div>
-
-                            <div class="form-group col-md-6">
+                        }
+                            @if (User.IsInRole("Doctor") || User.IsInRole("Admin") || User.IsInRole("NTPC Employee"))
+                        {
+                            <div class="form-group ">
                                 <label asp-for="FormO" class="control-label">Change Form O</label>
                                 <input type="file" asp-for="FormO" accept=".pdf" name="FormO" class="form-control" />
                                 <span asp-validation-for="FormO" class="text-danger"></span>
                             </div>
+                        }
                         </div>
 
-                        <div class="row gx-3 mb-3">
-                            <div class="form-group">
+                        @if (User.IsInRole("General") || User.IsInRole("Admin") || User.IsInRole("NTPC Employee"))
+                        {
+
+                            <div class="row gx-3 mb-3">
+                                <div class="form-group">
                                 <label asp-for="FormA" class="control-label">Change FormA</label>
                                 <input type="file" asp-for="FormA" accept=".pdf" name="FormA" class="form-control" />
                                 <span asp-validation-for="FormA" class="text-danger"></span>
                             </div>
-                        </div>
+                        </div>}
                         <!-- Save changes button-->
                         @*<button class="btn btn-primary" type="button">Save changes</button>*@
                         <div class="form-group">
