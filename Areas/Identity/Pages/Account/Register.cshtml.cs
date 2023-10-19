@@ -111,15 +111,15 @@ namespace EmployeeRegister.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
-            [Required]
+            /*[Required]
             public string? Role { get; set; }
 
             [ValidateNever]
-            public IEnumerable<SelectListItem> RoleList { get; set; }
+            public IEnumerable<SelectListItem> RoleList { get; set; }*/
         }
 
 
-        public async Task OnGetAsync(string returnUrl = null)
+        /*public async Task OnGetAsync(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
@@ -132,7 +132,7 @@ namespace EmployeeRegister.Areas.Identity.Pages.Account
                     Value = i
                 })
             };
-        }
+        }*/
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
@@ -154,7 +154,7 @@ namespace EmployeeRegister.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                    await _userManager.AddToRoleAsync(user,Input.Role);
+                    await _userManager.AddToRoleAsync(user,"Viewer"); //Input.Role instead of Viewer
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

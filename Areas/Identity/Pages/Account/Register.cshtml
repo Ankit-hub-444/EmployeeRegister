@@ -98,7 +98,7 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-8">
                     <h2 class="fw-bold mb-5">Register now</h2>
-                    <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" >
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                         <!-- 2 column grid layout with text inputs for the first and last names -->
@@ -140,17 +140,38 @@
                             <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                         </div>
                         <!-- Select -->
-                        <div class="form-floating form-outline mb-4">
+                        @*<div class="form-floating form-outline mb-4">
                             <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select" aria-required="true">
                                 <option disabled selected>Select Role</option>
                             </select>
                             <span asp-validation-for="Input.Role" class="text-danger"></span>
-                        </div>
-
+                        </div>*@
+                        
                         <!-- Submit button -->
+                        <button id="registerSubmit" type="submit" class="btn btn-primary btn-block mb-4" >Register</button>
 
-                        <button id="registerSubmit" type="submit" class="btn btn-primary btn-block mb-4">Register</button>
+                        @*  <a type="button" class="btn btn-primary" data-toggle="modal2" data-target="#myModal2">Register</a> *@
 
+                        <div id="myModal2" class="modal fade" role="dialog">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">
+                                            Form-A
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal2" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+
+                        </div>
+                       
 
                         <!-- Register buttons -->
 
@@ -159,8 +180,58 @@
             </div>
         </div>
     </div>
+
+    @*<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    Welcome, <span id="username"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+
+                </div>
+            </div>
+        </div>
+    </div>*@
 </section>
 
 @section Scripts {
+    <script type="text/javascript">
+        $('button[data-toggle="modal2').click(function () {
+            $('#myModal2').modal('show');
+        });
+        $('button[data-dismiss="modal2').click(function () {
+            $('#myModal2').modal('hide');
+        });
+
+        function success() {
+
+            $('#username').text($('#name').val());
+
+            $('#myModal').modal();
+
+            $('#myModal').on('hidden.bs.modal', function (e) {
+                window.location = "/Home";
+            });
+
+        }
+
+        $("#registerSubmit").click(function(){
+            return confirm("Please contact +917004964131 or mail nasimakhtar@ntpc.co.in to gain access if you want to fill data.");
+        }
+
+        )
+
+    </script>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
 }
+
