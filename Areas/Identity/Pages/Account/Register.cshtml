@@ -150,7 +150,7 @@
                         <!-- Submit button -->
                         <button id="registerSubmit" type="submit" class="btn btn-primary btn-block mb-4" >Register</button>
 
-                        @*  <a type="button" class="btn btn-primary" data-toggle="modal2" data-target="#myModal2">Register</a> *@
+                        @*  <a type="button" class="btn btn-primary" data-toggle="modal2" data-target="#myModal2">Register</a> 
 
                         <div id="myModal2" class="modal fade" role="dialog">
                             <div class="modal-dialog modal-xl">
@@ -171,7 +171,7 @@
                             </div><!-- /.modal-dialog -->
 
                         </div>
-                       
+                        *@
 
                         <!-- Register buttons -->
 
@@ -202,7 +202,7 @@
 
 @section Scripts {
     <script type="text/javascript">
-        $('button[data-toggle="modal2').click(function () {
+       @* $('button[data-toggle="modal2').click(function () {
             $('#myModal2').modal('show');
         });
         $('button[data-dismiss="modal2').click(function () {
@@ -219,10 +219,10 @@
                 window.location = "/Home";
             });
 
-        }
+        }*@
 
         $("#registerSubmit").click(function(){
-            return confirm("Please contact +917004964131 or mail nasimakhtar@ntpc.co.in to gain access if you want to fill data.");
+            return confirm("Please contact +917004964131 or mail nasimakhtar@ntpc.co.in if you want to gain access to fill data.");
         }
 
         )

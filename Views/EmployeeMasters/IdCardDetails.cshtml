@@ -17,7 +17,7 @@
         <div class="rectangle-stroke">
         <div class="rectangle">
         <p class="DULANGA-COAL-MINING">DULANGA COAL MINING PROJECT</p>
-        <div class="name-of-agency-UPL"><br />Name of Agency:-UPL Limited</div>
+        <div class="name-of-agency-UPL"><br />Name of Agency:-@Model.NameOfAgency</div>
                         <object data="data:image/jpg;base64,@Model.BarcodeImageData" class="img" height="120" width="120" asp-append-version="true" type="image/jpeg" class="rectangle-2">
                             <img src="~/FrontPageImage/no_image_available.png" />
                         </object>
@@ -28,27 +28,27 @@
                     </object>
         <div class="div"></div>
         <p class="name-ankit-anand">
-          <span class="text-wrapper">Name: Ankit Anand<br /></span> <span class="span"><br /></span>
+          <span class="text-wrapper">Name:@Model.EmployeeName<br /></span> <span class="span"><br /></span>
         </p>
-        <div class="text-wrapper-2">Father’s Name:Arbind Kumar Mehta</div>
+        <div class="text-wrapper-2">Father’s Name:@Model.EmployeeFathersName</div>
         <div class="doj">
-          DoJ:20.03.2000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Designation
-          :Dozer Operator
+          DoJ:@Model.DoJ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Designation
+          :@Model.EmployeeDesignation
         </div>
-        <div class="text-wrapper-3">Emerg. Phone:9123418147</div>
+        <div class="text-wrapper-3">Emerg. Phone:@Model.EmergencyMobileNumber</div>
         <div class="rectangle-3"></div>
         <div class="rectangle-4"></div>
         <div class="text-wrapper-4">Form “A” No</div>
-        <div class="text-wrapper-5">424</div>
+        <div class="text-wrapper-5">@Model.FormANo</div>
         <div class="rectangle-5"></div>
         <div class="text-wrapper-6">IME/PME No</div>
-        <div class="element">426<br />08.04.2019</div>
+        <div class="element">@Model.IMENo<br />@Model.EmployeeIMEDate</div>
         <div class="rectangle-6"></div>
         <div class="VTC-no">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VTC No</div>
-        <div class="text-wrapper-7">309</div>
+        <div class="text-wrapper-7">@Model.VtcNo</div>
         <div class="rectangle-7"></div>
         <div class="text-wrapper-8">Blood Group</div>
-        <div class="b">&nbsp;&nbsp;B+</div>
+        <div class="b">&nbsp;&nbsp;@Model.BloodGroup</div>
         <div class="rectangle-8"></div>
                     <object data="data:image/jpg;base64,@Model.AuthoritySignatureData" class="rectangle-9" height="120" width="120" asp-append-version="true" type="image/jpeg" class="rectangle-2">
                         <img src="~/FrontPageImage/no_image_available.png" />
@@ -82,6 +82,7 @@
             </div>
 
 
+    </div>
     </div>
     <a id="printPDF" class="btn btn-primary">Print</a>
 

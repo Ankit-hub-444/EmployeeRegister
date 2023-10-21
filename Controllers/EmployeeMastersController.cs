@@ -536,7 +536,9 @@ namespace EmployeeRegister.Controllers
 
             }
 
+
             //barcode
+         
             string id = Convert.ToString(employeeMaster.EmployeeVtccertificateNo);
             string barCodeText = $"https://localhost:7217/EmployeeMasters/Details/{id}";
             employeeMaster.Barcode = generateBarcode();
@@ -564,7 +566,7 @@ namespace EmployeeRegister.Controllers
 
             employeeMaster.BarcodeImageData = Convert.ToBase64String(bytes4, 0, bytes4.Length);
            
-
+            
 
             if (ModelState.IsValid)
             {
@@ -922,33 +924,35 @@ namespace EmployeeRegister.Controllers
 
 
 
-        ///later going to be deleted
-
-        string id1 = Convert.ToString(employeeMaster.EmployeeVtccertificateNo);
-            string barCodeText = $"https://localhost:7217/EmployeeMasters/Details/{id1}";
-            employeeMaster.Barcode = generateBarcode();
-            byte[]? bytes4 = null; 
-            Zen.Barcode.Code128BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
-            var image = barcode.Draw(barCodeText, 200);
-            var resultImage = new Bitmap(image.Width, image.Height + 20); // 20 is bottom padding, adjust to your text
-
-            using (var graphics = Graphics.FromImage(resultImage))
-            using (var font = new Font("Consolas", 12))
-            using (var brush = new SolidBrush(Color.Black))
-            using (var format = new StringFormat()
+            ///later going to be deleted
+            if (employeeMaster.Barcode == null)
             {
-                Alignment = StringAlignment.Center, // Also, horizontally centered text, as in your example of the expected output
-                LineAlignment = StringAlignment.Far
-            })
-            {
-                graphics.Clear(Color.White);
-                graphics.DrawImage(image, 0, 0);
-                graphics.DrawString(employeeMaster.Barcode, font, brush, resultImage.Width / 2, resultImage.Height, format);
+                string id1 = Convert.ToString(employeeMaster.EmployeeVtccertificateNo);
+                string barCodeText = $"https://localhost:7217/EmployeeMasters/Details/{id1}";
+                employeeMaster.Barcode = generateBarcode();
+                byte[]? bytes4 = null;
+                Zen.Barcode.Code128BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
+                var image = barcode.Draw(barCodeText, 200);
+                var resultImage = new Bitmap(image.Width, image.Height + 20); // 20 is bottom padding, adjust to your text
+
+                using (var graphics = Graphics.FromImage(resultImage))
+                using (var font = new Font("Consolas", 12))
+                using (var brush = new SolidBrush(Color.Black))
+                using (var format = new StringFormat()
+                {
+                    Alignment = StringAlignment.Center, // Also, horizontally centered text, as in your example of the expected output
+                    LineAlignment = StringAlignment.Far
+                })
+                {
+                    graphics.Clear(Color.White);
+                    graphics.DrawImage(image, 0, 0);
+                    graphics.DrawString(employeeMaster.Barcode, font, brush, resultImage.Width / 2, resultImage.Height, format);
+                }
+
+                bytes4 = converterDemo(resultImage);
+
+                employeeMaster.BarcodeImageData = Convert.ToBase64String(bytes4, 0, bytes4.Length);
             }
-
-            bytes4 = converterDemo(resultImage);
-
-            employeeMaster.BarcodeImageData = Convert.ToBase64String(bytes4, 0, bytes4.Length);
 
             if (ModelState.IsValid)
             {
